@@ -289,8 +289,8 @@ function CheckIcon() {
 function TierCard({ tier }: { tier: Tier }) {
   return (
     <div
-      className={`flex flex-col h-full bg-white shadow-[10px_18px_36px_-16px_rgba(26,46,24,0.4),3px_5px_10px_-4px_rgba(26,46,24,0.18)] ${
-        tier.highlight ? "lg:-translate-y-3" : ""
+      className={`flex flex-col h-full bg-white shadow-[10px_18px_36px_-16px_rgba(26,46,24,0.4),3px_5px_10px_-4px_rgba(26,46,24,0.18)] transition-[transform,box-shadow] duration-200 ease-out hover:shadow-[12px_22px_44px_-14px_rgba(26,46,24,0.48),3px_6px_12px_-4px_rgba(26,46,24,0.22)] hover:-translate-y-1 ${
+        tier.highlight ? "lg:-translate-y-3 lg:hover:-translate-y-4" : ""
       }`}
     >
       <div className="bg-brand-green-dark text-text-light px-6 py-7 text-center relative">
