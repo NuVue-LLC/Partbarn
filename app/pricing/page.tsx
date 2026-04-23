@@ -469,12 +469,15 @@ const rates = [
 
 function RatesSection() {
   return (
-    <section className="relative py-24 md:py-28 overflow-hidden" style={{ backgroundColor: "#1e3d1a" }}>
+    <section className="relative py-24 md:py-32 overflow-hidden" style={{ backgroundColor: "#1e3d1a" }}>
       <PaperTexture />
-      <div className="relative max-w-5xl mx-auto px-6 md:px-12">
-        <FadeUp>
-          <div className="text-center mb-14">
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
+        {/* Header */}
+        <div className="text-center mb-16 md:mb-20">
+          <FadeUp>
             <p className="eyebrow text-brand-accent text-sm mb-5">Simulator Rates</p>
+          </FadeUp>
+          <FadeUp delay={0.08}>
             <div className="flex items-center justify-center gap-5">
               <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
               <h2 className="font-playfair italic font-normal text-3xl md:text-5xl text-text-light leading-none">
@@ -482,43 +485,56 @@ function RatesSection() {
               </h2>
               <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
             </div>
-          </div>
-        </FadeUp>
+          </FadeUp>
+        </div>
 
-        <ul className="divide-y divide-text-light/20 border-y border-text-light/20">
+        {/* Three rate pillars */}
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-y-14 md:gap-y-0 relative">
           {rates.map((r, i) => (
-            <FadeUp key={r.label} delay={i * 0.08} as="li">
-              <div className="py-7 md:py-9 grid grid-cols-12 gap-4 items-baseline">
-                <div className="col-span-12 md:col-span-4">
-                  <p className="eyebrow text-brand-accent text-xs tracking-[0.25em]">
-                    {r.label}
-                  </p>
-                </div>
-                <div className="col-span-12 md:col-span-4 flex items-baseline gap-1">
-                  <span className="font-playfair font-normal text-5xl md:text-6xl text-text-light leading-none">
+            <FadeUp key={r.label} delay={i * 0.12} as="li">
+              <div className="text-center md:px-6 relative">
+                <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] mb-5">
+                  {r.label}
+                </p>
+                <div className="flex items-baseline justify-center gap-1 mb-5">
+                  <span className="font-playfair font-normal text-6xl md:text-7xl text-text-light leading-none">
                     {r.price}
                   </span>
                   <span className="font-barlow text-text-light/60 text-base md:text-lg">
                     {r.unit}
                   </span>
                 </div>
-                <div className="col-span-12 md:col-span-4 md:text-right">
-                  <p className="font-barlow text-text-light/70 text-sm md:text-base">
-                    {r.note}
-                  </p>
-                </div>
+                <p className="font-barlow text-text-light/75 text-sm md:text-base leading-[1.6] max-w-[220px] mx-auto">
+                  {r.note}
+                </p>
+                {i < rates.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-24 bg-brand-accent/30"
+                  />
+                )}
               </div>
             </FadeUp>
           ))}
         </ul>
 
-        <FadeUp delay={0.35}>
-          <p className="font-barlow text-text-light/65 text-sm mt-10 max-w-2xl mx-auto text-center leading-[1.7]">
-            Rates are per bay, not per person — up to six players per bay.
-            Peak applies Oct–Apr on evenings, weekends, and holidays.
-            Member rates available on every booking.
-          </p>
-        </FadeUp>
+        {/* Handwritten member accent + disclaimer */}
+        <div className="mt-20 text-center">
+          <FadeUp delay={0.35}>
+            <p
+              className="font-caveat text-brand-accent text-3xl md:text-4xl mb-6 leading-none"
+              style={{ transform: "rotate(-1.5deg)" }}
+            >
+              members save on every booking.
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.42}>
+            <p className="font-barlow text-text-light/65 text-sm max-w-2xl mx-auto leading-[1.7]">
+              Rates are per bay, not per person — up to six players per bay.
+              Peak applies Oct–Apr on evenings, weekends, and holidays.
+            </p>
+          </FadeUp>
+        </div>
       </div>
     </section>
   );
