@@ -54,7 +54,7 @@ export default function Hero() {
       </div>
 
       {/* Desktop widget — overhangs the hero/intro seam */}
-      <div className="hidden md:block absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[40%] z-30 w-full max-w-4xl px-6 md:px-12">
+      <div className="hidden md:block absolute bottom-0 left-1/2 -translate-x-1/2 z-30 w-full max-w-4xl px-6 md:px-12 pb-6">
         <BookingWidget />
       </div>
     </section>

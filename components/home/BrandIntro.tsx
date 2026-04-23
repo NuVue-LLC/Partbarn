@@ -16,7 +16,7 @@ function PaperTexture() {
 
 export default function BrandIntro() {
   return (
-    <section className="relative bg-bg-cream py-20 md:pt-48 md:pb-24 overflow-hidden">
+    <section className="relative bg-bg-cream py-20 md:py-24 overflow-hidden">
       <PaperTexture />
 
       <div
