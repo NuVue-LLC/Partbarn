@@ -319,65 +319,77 @@ const rates: Rate[] = [
 
 function RatesReminderSection() {
   return (
-    <section className="relative bg-bg-cream py-20 md:py-28 overflow-hidden">
-      <PaperTexture />
+    <section
+      className="relative py-10 md:py-12 overflow-hidden border-y border-brand-accent/25"
+      style={{ backgroundColor: "#14301a" }}
+    >
+      <DarkTexture />
 
-      <div className="relative max-w-2xl mx-auto px-6 md:px-12">
-        {/* Header */}
-        <div className="text-center mb-10 md:mb-14">
-          <FadeUp>
-            <p className="eyebrow text-brand-accent text-sm mb-5">Rates</p>
-          </FadeUp>
-          <FadeUp delay={0.08}>
-            <div className="flex items-center justify-center gap-5">
-              <span aria-hidden="true" className="block h-px w-10 md:w-14 bg-brand-accent" />
-              <h2 className="font-playfair italic font-normal text-text-dark text-3xl md:text-5xl leading-none">
-                Pay by the hour.
-              </h2>
-              <span aria-hidden="true" className="block h-px w-10 md:w-14 bg-brand-accent" />
-            </div>
-          </FadeUp>
-        </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/60 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/60 to-transparent"
+      />
 
-        {/* Rate rows — tight flex, label+price hugged left, note right */}
-        <FadeUp delay={0.18}>
-          <ul className="divide-y divide-brand-accent/25 border-y border-brand-accent/25">
-            {rates.map((r) => (
-              <li
-                key={r.label}
-                className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 sm:gap-6 py-5 md:py-6"
-              >
-                <div className="flex items-baseline gap-4 md:gap-6">
-                  <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] w-20 md:w-24 shrink-0">
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10">
+          {/* Left label */}
+          <FadeUp className="text-center lg:text-left shrink-0">
+            <p className="eyebrow text-brand-accent text-[10px] md:text-xs tracking-[0.25em] mb-2">
+              Rates
+            </p>
+            <p className="font-playfair italic font-normal text-text-light text-xl md:text-2xl leading-none">
+              Pay by the hour.
+            </p>
+            <p
+              className="font-caveat text-brand-accent text-lg md:text-xl leading-none mt-2"
+              style={{ transform: "rotate(-1.5deg)" }}
+            >
+              per bay — not per person.
+            </p>
+          </FadeUp>
+
+          {/* Center rates ribbon */}
+          <FadeUp delay={0.1} className="flex-1 w-full lg:w-auto">
+            <ul className="grid grid-cols-3 relative">
+              {rates.map((r, i) => (
+                <li key={r.label} className="relative text-center px-2 md:px-4">
+                  <p className="eyebrow text-brand-accent text-[10px] tracking-[0.25em] mb-2">
                     {r.label}
                   </p>
-                  <p className="font-playfair font-normal text-text-dark text-3xl md:text-4xl leading-none">
+                  <p className="font-playfair font-normal text-text-light text-3xl md:text-4xl leading-none mb-1.5">
                     {r.price}
-                    <span className="font-barlow text-text-dark/55 text-sm md:text-base ml-1 align-baseline">
+                    <span className="font-barlow text-text-light/55 text-sm md:text-base ml-1 align-baseline">
                       {r.unit}
                     </span>
                   </p>
-                </div>
-                <p className="font-barlow text-text-dark/70 text-xs md:text-sm leading-[1.55] sm:text-right sm:max-w-[260px]">
-                  {r.note}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </FadeUp>
+                  <p className="font-barlow text-text-light/65 text-[10px] md:text-[11px] leading-[1.4] max-w-[160px] mx-auto">
+                    {r.note}
+                  </p>
+                  {i < rates.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-16 md:h-20 bg-brand-accent/30"
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+          </FadeUp>
 
-        <FadeUp delay={0.3}>
-          <p className="font-barlow text-text-dark/70 text-xs md:text-sm leading-[1.7] text-center mt-8">
-            Rates are per bay, not per person — up to six players per bay. Members
-            pay less.{" "}
+          {/* Right link */}
+          <FadeUp delay={0.2} className="shrink-0">
             <a
               href="/pricing"
-              className="text-brand-accent hover:text-text-dark transition-colors border-b border-brand-accent/40"
+              className="eyebrow text-brand-accent hover:text-text-light transition-colors text-[10px] md:text-xs tracking-[0.25em] whitespace-nowrap border-b border-brand-accent/40 pb-1"
             >
-              See membership tiers →
+              See Membership Tiers →
             </a>
-          </p>
-        </FadeUp>
+          </FadeUp>
+        </div>
       </div>
     </section>
   );
@@ -389,80 +401,74 @@ function SomethingBiggerSection() {
   return (
     <section
       aria-labelledby="bigger-heading"
-      className="relative py-20 md:py-28 overflow-hidden"
-      style={{ backgroundColor: "#1e3d1a" }}
+      className="relative w-full min-h-[55vh] md:min-h-[60vh] overflow-hidden flex items-center justify-center"
     >
-      <DarkTexture />
+      <div className="absolute inset-0 z-0 motion-safe:animate-ken-burns">
+        <Image
+          src="/images/events/corporate.jpg"
+          alt="Private event at The ParT Barn — the full dining room and bar set for a group"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-10"
+        style={{ backgroundColor: "rgba(18, 36, 18, 0.74)" }}
+      />
 
-      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left — editorial photo with Caveat caption */}
-          <FadeUp delay={0.14} className="lg:col-span-5 flex justify-center">
-            <div
-              className="relative w-full max-w-[440px]"
-              style={{ transform: "rotate(-2deg)" }}
-            >
-              <div
-                className="relative w-full aspect-[4/5] overflow-hidden"
-                style={{
-                  boxShadow:
-                    "18px 24px 60px -18px rgba(0,0,0,0.65), 4px 8px 16px -6px rgba(0,0,0,0.4)",
-                }}
-              >
-                <Image
-                  src="/images/events/corporate.jpg"
-                  alt="Private event at The ParT Barn — players gathered at a simulator bay"
-                  fill
-                  sizes="(min-width: 1024px) 35vw, 90vw"
-                  className="object-cover"
-                />
-              </div>
-              <p
-                aria-hidden="true"
-                className="font-caveat text-brand-accent text-2xl md:text-3xl mt-4 text-center leading-none"
-                style={{ transform: "rotate(1deg)" }}
-              >
-                buy out the house.
-              </p>
-            </div>
-          </FadeUp>
-
-          {/* Right — copy + CTA */}
-          <FadeUp delay={0.22} className="lg:col-span-7 lg:pl-4">
-            <p className="eyebrow text-brand-accent text-sm mb-4">Larger Groups</p>
+      <div className="relative z-20 max-w-3xl mx-auto px-6 md:px-12 py-20 md:py-24 text-center">
+        <FadeUp>
+          <p className="eyebrow text-brand-accent text-xs md:text-sm tracking-[0.25em] mb-5">
+            Larger Groups
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.08}>
+          <div className="flex items-center justify-center gap-4 md:gap-5 mb-6">
+            <span aria-hidden="true" className="block h-px w-10 md:w-14 bg-brand-accent" />
             <h2
               id="bigger-heading"
-              className="font-playfair font-normal text-text-light text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-5"
+              className="font-playfair font-normal text-text-light text-4xl md:text-5xl lg:text-6xl leading-[1.05]"
             >
               Eight or more?
             </h2>
-            <span
-              aria-hidden="true"
-              className="block h-px w-16 bg-brand-accent mb-5"
-            />
-            <p className="font-barlow text-text-light/85 text-base md:text-lg leading-[1.75] mb-8 max-w-xl">
-              Corporate nights. Milestone birthdays. Bachelor parties. Full buyouts.
-              Our private events team handles everything from menu to simulator
-              flights.
-            </p>
-            <div className="flex items-center gap-5">
-              <a
-                href="/private-events"
-                className="eyebrow text-brand-accent hover:text-text-light transition-colors text-xs tracking-[0.25em] border-b border-brand-accent/40 pb-1 inline-block"
-              >
-                See Private Events →
-              </a>
-              <span
-                aria-hidden="true"
-                className="font-caveat text-brand-accent/80 text-xl md:text-2xl leading-none"
-                style={{ transform: "rotate(-2deg)" }}
-              >
-                we handle the rest.
-              </span>
-            </div>
-          </FadeUp>
-        </div>
+            <span aria-hidden="true" className="block h-px w-10 md:w-14 bg-brand-accent" />
+          </div>
+        </FadeUp>
+        <FadeUp delay={0.18}>
+          <p className="font-barlow text-text-light/85 text-base md:text-lg leading-[1.75] max-w-xl mx-auto mb-6">
+            Corporate nights. Milestone birthdays. Bachelor parties. Full buyouts.
+            Our private events team handles everything from menu to simulator
+            flights.
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.26}>
+          <p
+            className="font-caveat text-brand-accent text-2xl md:text-4xl leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)] mb-8"
+            style={{ transform: "rotate(-1.5deg)" }}
+          >
+            buy out the house. we handle the rest.
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.34}>
+          <a
+            href="/private-events"
+            className="eyebrow text-brand-accent hover:text-text-light transition-colors text-xs md:text-sm tracking-[0.25em] border-b border-brand-accent/40 pb-1 inline-block"
+          >
+            See Private Events →
+          </a>
+        </FadeUp>
       </div>
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/60 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/60 to-transparent"
+      />
     </section>
   );
 }
@@ -520,7 +526,11 @@ function TalkToUsSection() {
           </p>
         </FadeUp>
         <FadeUp delay={0.32}>
-          <Button href={`tel:${BUSINESS.phoneRaw}`} variant="primary">
+          <Button
+            href={`tel:${BUSINESS.phoneRaw}`}
+            variant="primary"
+            className="!px-6 !py-3 !text-xs"
+          >
             Call Now
           </Button>
         </FadeUp>
