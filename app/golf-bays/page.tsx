@@ -269,9 +269,9 @@ function BaysHero() {
   );
 }
 
-// ========== EXPERIENCE ==========
+// ========== HOW IT WORKS ==========
 
-interface ExperienceBlock {
+interface TechBlock {
   eyebrow: string;
   title: string;
   body: string;
@@ -282,36 +282,36 @@ interface ExperienceBlock {
   caveat: string;
 }
 
-const experienceBlocks: ExperienceBlock[] = [
+const techBlocks: TechBlock[] = [
   {
-    eyebrow: "Come As You Are",
-    title: "No tee time, no dress code.",
-    body: "Walk in after work. Jeans and sneakers are fine. League night, solo practice, or a group of friends meeting for drinks — the bay doesn't care, and neither do we.",
-    image: "/images/events/leagues.jpg",
-    alt: "Friends playing a simulator bay at The ParT Barn on a league night",
+    eyebrow: "Dual-Vertical Tracking",
+    title: "Two cameras. Every ball. Every angle.",
+    body: "Most sims track the ball with a single side-fired sensor. TwoVisionX uses two vertical high-speed cameras mounted above the tee — the same rig tour coaches use for swing analysis. Ball speed, spin rate, launch angle, and clubface impact point, read within one percent of a real flight.",
+    image: "/images/bays/lounge.jpg",
+    alt: "A Golfzon TwoVisionX simulator bay showing the overhead camera rig and the course on screen",
     rotate: "-2deg",
     aspect: "aspect-[4/3]",
-    caveat: "whatever you're wearing, it's fine.",
+    caveat: "the ball goes where it should.",
   },
   {
-    eyebrow: "Real Food, Real Drinks",
-    title: "The kitchen comes to the bay.",
-    body: "Wood-fired flatbreads delivered bayside. Cocktails poured at the main bar and walked over. Not microwave food in a waiting room — a full kitchen and a full bar, twenty feet away.",
-    image: "/images/gallery/sliders.jpg",
-    alt: "Sliders and a flatbread set on the rail in front of a simulator bay at The ParT Barn",
+    eyebrow: "The Moving Swing Plate",
+    title: "The floor tilts with your lie.",
+    body: "Uphill into the green on Augusta's 10th? The plate under your feet lifts. Downhill into the ravine at Pebble? It drops. Sidehill off the fairway on 18? It slopes. Every shot plays off the exact grade the course gives you — not standing flat on a rubber mat.",
+    image: "/images/events/leagues.jpg",
+    alt: "Players at a simulator bay with the screen showing a championship course fairway",
     rotate: "2.5deg",
     aspect: "aspect-[4/5]",
-    caveat: "order the flatbread.",
+    caveat: "practice like the tour.",
   },
   {
-    eyebrow: "Play Serious or Play Silly",
-    title: "Dial in your swing or just hit it sideways.",
-    body: "The tech is good enough for serious practice — full swing data, tournament courses, shot-tracing. The vibe is forgiving enough for first-timers, birthdays, and the friend who brought a beer to the tee box.",
-    image: "/images/events/birthdays.jpg",
-    alt: "A signature martini garnished with a mini golf ball at The ParT Barn bar",
+    eyebrow: "Every Shot, Measured",
+    title: "Twelve data points per swing.",
+    body: "Ball speed, clubhead speed, smash factor, launch angle, spin axis, backspin, sidespin, clubface angle, swing path, attack angle, carry distance, total distance. Every shot logs to your card. Print it on the way out. Beat it next time.",
+    image: "/images/gallery/retail.jpg",
+    alt: "Retail display at The ParT Barn with clubs and gear on shelves",
     rotate: "-3deg",
     aspect: "aspect-[4/3]",
-    caveat: "both work.",
+    caveat: "the stats don't lie.",
   },
 ];
 
@@ -339,13 +339,13 @@ function ExperienceSection() {
         {/* Header */}
         <div className="text-center mb-20 md:mb-24">
           <FadeUp>
-            <p className="eyebrow text-brand-accent text-sm mb-5">The Experience</p>
+            <p className="eyebrow text-brand-accent text-sm mb-5">How It Works</p>
           </FadeUp>
           <FadeUp delay={0.08}>
             <div className="flex items-center justify-center gap-5">
               <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
               <h2 className="font-playfair italic font-normal text-text-dark text-3xl md:text-5xl leading-none">
-                What a bay actually feels like.
+                Why this sim is different.
               </h2>
               <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
             </div>
@@ -354,7 +354,7 @@ function ExperienceSection() {
 
         {/* Three blocks */}
         <div className="flex flex-col gap-24 md:gap-28">
-          {experienceBlocks.map((b, i) => {
+          {techBlocks.map((b, i) => {
             const imageOrder = i % 2 === 0 ? "lg:order-1" : "lg:order-2";
             const copyOrder = i % 2 === 0 ? "lg:order-2" : "lg:order-1";
             return (
