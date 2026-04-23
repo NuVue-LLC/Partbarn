@@ -425,7 +425,7 @@ function LeaguesHero() {
   return (
     <section
       aria-labelledby="leagues-hero-headline"
-      className="relative min-h-[75vh] w-full overflow-hidden flex flex-col"
+      className="relative min-h-[55vh] w-full overflow-hidden flex flex-col"
     >
       <div className="absolute inset-0 z-0 motion-safe:animate-ken-burns">
         <Image
@@ -442,7 +442,7 @@ function LeaguesHero() {
         style={{ backgroundColor: "rgba(30, 61, 26, 0.55)" }}
       />
 
-      <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-6 md:px-12 py-32 md:py-40 min-h-[75vh]">
+      <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-6 md:px-12 py-20 md:py-24 min-h-[55vh]">
         <div className="max-w-4xl mx-auto w-full text-center">
           <FadeUp delay={0.1}>
             <p className="eyebrow text-brand-accent text-sm tracking-[0.25em] mb-4">

@@ -200,7 +200,7 @@ function PricingHero() {
   return (
     <section
       aria-labelledby="pricing-hero-headline"
-      className="relative min-h-[75vh] w-full overflow-hidden flex flex-col"
+      className="relative min-h-[55vh] w-full overflow-hidden flex flex-col"
     >
       {/* Background image */}
       <div className="absolute inset-0 z-0 motion-safe:animate-ken-burns">
@@ -220,7 +220,7 @@ function PricingHero() {
       />
 
       {/* Content */}
-      <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-6 md:px-12 py-32 md:py-40 min-h-[75vh]">
+      <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-6 md:px-12 py-20 md:py-24 min-h-[55vh]">
         {/* Scorecard label — upper left */}
         <div className="max-w-7xl mx-auto w-full mb-12 md:mb-16">
           <FadeUp>

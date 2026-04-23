@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="private-events-hero-headline"
-      className="relative min-h-[90vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative min-h-[60vh] md:min-h-[70vh] w-full flex items-center justify-center overflow-hidden"
     >
       <div className="absolute inset-0 z-0 motion-safe:animate-ken-burns">
         <Image
@@ -22,7 +22,7 @@ export default function Hero() {
         style={{ backgroundColor: "rgba(30, 61, 26, 0.55)" }}
       />
 
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-16 flex flex-col items-center text-center text-text-light">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 pt-24 pb-12 flex flex-col items-center text-center text-text-light">
         <p className="eyebrow text-text-light/85 text-xs md:text-sm mb-6">
           Private Events · Buyouts · Bay Tournaments
         </p>
