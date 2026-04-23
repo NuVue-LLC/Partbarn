@@ -129,28 +129,16 @@ function Hole19Motif() {
       <path d="M 858 322 L 914 340 L 858 358 Z" fill="currentColor" fillOpacity="0.65" />
       <circle cx="858" cy="433" r="5" fill="currentColor" fillOpacity="0.45" />
 
-      {/* Clubhouse building — top-right, the actual 19th hole */}
-      <rect x="968" y="76" width="192" height="152"
-        fill="none" stroke="currentColor" strokeWidth="1.2"
-      />
-      {/* Roofline */}
-      <line x1="968" y1="76" x2="1064" y2="38" stroke="currentColor" strokeWidth="0.9" />
-      <line x1="1160" y1="76" x2="1064" y2="38" stroke="currentColor" strokeWidth="0.9" />
-      {/* Windows */}
-      <rect x="990" y="108" width="28" height="22" fill="currentColor" fillOpacity="0.14" stroke="currentColor" strokeWidth="0.7" />
-      <rect x="1038" y="108" width="28" height="22" fill="currentColor" fillOpacity="0.14" stroke="currentColor" strokeWidth="0.7" />
-      <rect x="1086" y="108" width="28" height="22" fill="currentColor" fillOpacity="0.14" stroke="currentColor" strokeWidth="0.7" />
-      <rect x="1112" y="108" width="28" height="22" fill="currentColor" fillOpacity="0.14" stroke="currentColor" strokeWidth="0.7" />
-      {/* Door */}
-      <rect x="1046" y="182" width="28" height="36" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="0.7" />
-      {/* Label */}
-      <text x="1064" y="30" textAnchor="middle" fontSize="9" fill="currentColor" stroke="none" letterSpacing="1.5" fontFamily="sans-serif">CLUBHOUSE</text>
-
-      {/* Dotted path from green up to clubhouse */}
-      <path
-        d="M 968 228 C 948 300, 924 370, 870 430"
-        fill="none" stroke="currentColor" strokeWidth="0.9" strokeDasharray="3 3"
-      />
+      {/* Yardage callout */}
+      <g
+        fontFamily="var(--font-barlow-condensed), sans-serif"
+        fontSize="10"
+        letterSpacing="2"
+        fill="currentColor"
+      >
+        <line x1="420" y1="450" x2="445" y2="440" stroke="currentColor" strokeWidth="0.8" />
+        <text x="450" y="444">162 YDS · TO PIN</text>
+      </g>
 
       {/* Scale ruler — bottom-right */}
       <g transform="translate(880 830)" stroke="currentColor" strokeWidth="0.8" fill="none">
@@ -640,8 +628,19 @@ const faqs = [
 
 function FaqSection() {
   return (
-    <section className="relative py-24 md:py-28 overflow-hidden" style={{ backgroundColor: "#1e3d1a" }}>
+    <section className="relative bg-bg-off py-24 md:py-28 overflow-hidden">
       <PaperTexture />
+
+      {/* Gold gradient top/bottom rules */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
+      />
+
       <div className="relative max-w-3xl mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <FadeUp>
@@ -650,7 +649,7 @@ function FaqSection() {
           <FadeUp delay={0.08}>
             <div className="flex items-center justify-center gap-5">
               <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
-              <h2 className="font-playfair italic font-normal text-3xl md:text-5xl text-text-light leading-none">
+              <h2 className="font-playfair italic font-normal text-3xl md:text-5xl text-text-dark leading-none">
                 The details, answered.
               </h2>
               <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
@@ -658,14 +657,14 @@ function FaqSection() {
           </FadeUp>
         </div>
 
-        <ul className="divide-y divide-text-light/20 border-y border-text-light/20">
+        <ul className="divide-y divide-text-dark/15 border-y border-text-dark/15">
           {faqs.map((f, i) => (
             <FadeUp key={f.q} delay={i * 0.05} as="li">
               <div className="py-8">
-                <p className="font-playfair italic text-text-light text-xl md:text-2xl leading-snug mb-3">
+                <p className="font-playfair italic text-text-dark text-xl md:text-2xl leading-snug mb-3">
                   {f.q}
                 </p>
-                <p className="font-barlow text-text-light/75 text-sm md:text-base leading-[1.7] max-w-2xl">
+                <p className="font-barlow text-text-dark/80 text-sm md:text-base leading-[1.7] max-w-2xl">
                   {f.a}
                 </p>
               </div>
