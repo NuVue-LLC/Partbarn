@@ -38,6 +38,28 @@ function FlagIcon({ className = "" }: { className?: string }) {
   );
 }
 
+function CheckIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      className="shrink-0 mt-0.5"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" stroke="#c9a84c" strokeWidth="1.4" />
+      <path
+        d="M7.5 12.5 L10.5 15.5 L16.5 9"
+        stroke="#c9a84c"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 // ========== HOLE 19 MOTIF ==========
 
 function Hole19Motif() {
@@ -158,7 +180,27 @@ function PhotoBreak() {
       />
       <div
         className="absolute inset-0"
-        style={{ backgroundColor: "rgba(30, 61, 26, 0.30)" }}
+        style={{ backgroundColor: "rgba(30, 61, 26, 0.38)" }}
+      />
+
+      {/* Handwritten caption */}
+      <div className="absolute inset-0 flex items-center justify-center px-6">
+        <p
+          className="font-caveat text-text-light text-4xl md:text-6xl text-center leading-[1.1] drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+          style={{ transform: "rotate(-2deg)" }}
+        >
+          your place, when you want it.
+        </p>
+      </div>
+
+      {/* Top/bottom gradient rules */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/60 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/60 to-transparent"
       />
     </div>
   );
@@ -301,53 +343,61 @@ const tiers: Tier[] = [
 ];
 
 function TierPlacard({ tier }: { tier: Tier }) {
-  const borderClass = tier.highlight
-    ? "border-2 border-brand-accent"
-    : "border border-text-dark/15";
   return (
     <div
-      className={`relative flex flex-col h-full bg-bg-cream ${borderClass} ${
-        tier.highlight ? "lg:-translate-y-4" : ""
+      className={`relative flex flex-col h-full bg-white shadow-[10px_18px_36px_-16px_rgba(26,46,24,0.4),3px_5px_10px_-4px_rgba(26,46,24,0.18)] ${
+        tier.highlight ? "lg:-translate-y-3" : ""
       }`}
     >
-      {tier.highlight && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-accent px-4 py-1">
-          <span className="eyebrow text-[10px] text-text-dark tracking-[0.25em]">
+      {/* Dark green header */}
+      <div className="relative bg-brand-green-dark text-text-light px-6 py-8 text-center">
+        {tier.highlight && (
+          <span className="eyebrow absolute top-3 right-4 text-[10px] tracking-[0.2em] text-brand-accent">
             Most Popular
           </span>
-        </div>
-      )}
-
-      <div className="px-8 pt-10 pb-8 border-b border-text-dark/15">
+        )}
         <p className="eyebrow text-brand-accent text-xs tracking-[0.25em]">
           {tier.name} Membership
         </p>
-        <p className="font-playfair font-normal text-text-dark text-6xl md:text-7xl mt-4 leading-none">
+        <p className="font-playfair font-normal text-5xl md:text-6xl text-text-light mt-3 leading-none">
           {tier.price}
         </p>
-        <p className="font-barlow text-text-dark/70 text-sm mt-3 leading-snug">
+        <p className="font-barlow text-text-light/75 text-xs md:text-sm mt-3 leading-snug">
           {tier.priceSub}
         </p>
         {tier.hours && (
-          <p className="eyebrow text-text-dark/60 text-[10px] mt-4 tracking-[0.2em]">
+          <p className="font-barlow text-text-light/70 text-[11px] md:text-xs mt-3 leading-snug">
             {tier.hours}
           </p>
         )}
       </div>
 
-      <ul className="flex-1 flex flex-col gap-4 px-8 py-8">
+      {/* Handwritten "our pick" tag on highlighted tier */}
+      {tier.highlight && (
+        <span
+          aria-hidden="true"
+          className="font-caveat text-brand-accent text-3xl md:text-4xl absolute -top-7 -right-4 z-10"
+          style={{ transform: "rotate(8deg)" }}
+        >
+          our pick!
+        </span>
+      )}
+
+      {/* Perks body */}
+      <ul className="flex-1 flex flex-col gap-4 px-6 py-8">
         {tier.perks.map((perk) => (
           <li
             key={perk}
             className="flex items-start gap-3 font-barlow text-text-dark text-sm md:text-base leading-[1.55]"
           >
-            <FlagIcon />
+            <CheckIcon />
             <span>{perk}</span>
           </li>
         ))}
       </ul>
 
-      <div className="px-8 pb-8">
+      {/* CTA button footer */}
+      <div className="px-6 pb-8">
         <Button
           href={tier.ctaHref}
           variant="primary"
@@ -362,20 +412,39 @@ function TierPlacard({ tier }: { tier: Tier }) {
 
 function TiersSection() {
   return (
-    <section className="relative bg-bg-cream pt-8 pb-24 md:pb-28 overflow-hidden">
+    <section className="relative bg-bg-cream pt-16 md:pt-20 pb-24 md:pb-28 overflow-hidden">
       <PaperTexture />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.14]">
         <Hole19Motif />
       </div>
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-        <FadeUp>
-          <div className="text-center mb-12 md:mb-16">
-            <p className="eyebrow text-brand-accent text-sm mb-3">The Tiers</p>
-            <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto" />
-          </div>
-        </FadeUp>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+      {/* Gold gradient top/bottom rules */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
+      />
+
+      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
+        <div className="text-center mb-14 md:mb-20">
+          <FadeUp>
+            <p className="eyebrow text-brand-accent text-sm mb-5">The Tiers</p>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <div className="flex items-center justify-center gap-5">
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+              <h2 className="font-playfair italic font-normal text-text-dark text-3xl md:text-5xl leading-none">
+                Pick your clubhouse.
+              </h2>
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+            </div>
+          </FadeUp>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 items-stretch">
           {tiers.map((tier, i) => (
             <FadeUp key={tier.name} delay={i * 0.08}>
               <TierPlacard tier={tier} />
@@ -417,11 +486,14 @@ function RatesSection() {
       <div className="relative max-w-5xl mx-auto px-6 md:px-12">
         <FadeUp>
           <div className="text-center mb-14">
-            <p className="eyebrow text-brand-accent text-sm mb-3">Simulator Rates</p>
-            <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto mb-6" />
-            <h2 className="font-playfair font-normal text-3xl md:text-5xl text-text-light leading-[1.1]">
-              Pay by the hour.
-            </h2>
+            <p className="eyebrow text-brand-accent text-sm mb-5">Simulator Rates</p>
+            <div className="flex items-center justify-center gap-5">
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+              <h2 className="font-playfair italic font-normal text-3xl md:text-5xl text-text-light leading-none">
+                Pay by the hour.
+              </h2>
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+            </div>
           </div>
         </FadeUp>
 
@@ -488,13 +560,32 @@ function DiscountsSection() {
   return (
     <section className="relative bg-bg-cream py-24 md:py-28 overflow-hidden">
       <PaperTexture />
+
+      {/* Gold gradient top/bottom rules */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
+      />
+
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
-        <FadeUp>
-          <div className="text-center mb-14">
-            <p className="eyebrow text-brand-accent text-sm mb-3">Discounts &amp; Extras</p>
-            <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto" />
-          </div>
-        </FadeUp>
+        <div className="text-center mb-16">
+          <FadeUp>
+            <p className="eyebrow text-brand-accent text-sm mb-5">Discounts &amp; Extras</p>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <div className="flex items-center justify-center gap-5">
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+              <h2 className="font-playfair italic font-normal text-text-dark text-3xl md:text-5xl leading-none">
+                A little something extra.
+              </h2>
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+            </div>
+          </FadeUp>
+        </div>
 
         <ul className="grid grid-cols-1 md:grid-cols-3 border-t border-text-dark/15 md:divide-x md:divide-text-dark/15">
           {discounts.map((d, i) => (
@@ -552,15 +643,20 @@ function FaqSection() {
     <section className="relative py-24 md:py-28 overflow-hidden" style={{ backgroundColor: "#1e3d1a" }}>
       <PaperTexture />
       <div className="relative max-w-3xl mx-auto px-6 md:px-12">
-        <FadeUp>
-          <div className="text-center mb-14">
-            <p className="eyebrow text-brand-accent text-sm mb-3">Frequently Asked</p>
-            <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto mb-6" />
-            <h2 className="font-playfair font-normal text-3xl md:text-5xl text-text-light leading-[1.1]">
-              The details, answered.
-            </h2>
-          </div>
-        </FadeUp>
+        <div className="text-center mb-16">
+          <FadeUp>
+            <p className="eyebrow text-brand-accent text-sm mb-5">Frequently Asked</p>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <div className="flex items-center justify-center gap-5">
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+              <h2 className="font-playfair italic font-normal text-3xl md:text-5xl text-text-light leading-none">
+                The details, answered.
+              </h2>
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+            </div>
+          </FadeUp>
+        </div>
 
         <ul className="divide-y divide-text-light/20 border-y border-text-light/20">
           {faqs.map((f, i) => (
@@ -599,15 +695,16 @@ function TalkToUsSection() {
       />
       <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-12 text-center">
         <FadeUp>
-          <p className="eyebrow text-brand-accent text-sm mb-3">Still thinking</p>
+          <p className="eyebrow text-brand-accent text-sm mb-5">Still thinking</p>
         </FadeUp>
         <FadeUp delay={0.08}>
-          <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto mb-6" />
-        </FadeUp>
-        <FadeUp delay={0.14}>
-          <h2 className="font-playfair font-normal text-4xl md:text-6xl text-text-light leading-[1.05] mb-6">
-            Still have questions? Talk to us.
-          </h2>
+          <div className="flex items-center justify-center gap-5 mb-8">
+            <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+            <h2 className="font-playfair italic font-normal text-3xl md:text-5xl text-text-light leading-none">
+              Talk to us.
+            </h2>
+            <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+          </div>
         </FadeUp>
         <FadeUp delay={0.22}>
           <p className="font-barlow text-text-light/80 text-base md:text-lg leading-[1.7] max-w-xl mx-auto mb-10">
