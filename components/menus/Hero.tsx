@@ -1,36 +1,117 @@
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 
 export default function Hero() {
   return (
     <section
       aria-labelledby="menus-hero-headline"
-      className="relative bg-brand-green-dark text-text-light pt-36 md:pt-44 pb-20 md:pb-28"
+      className="relative min-h-[90vh] md:min-h-screen w-full overflow-hidden"
     >
-      <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
-        <p className="eyebrow text-brand-accent text-sm mb-6">
-          Food &amp; Drink
-        </p>
-        <h1
-          id="menus-hero-headline"
-          className="font-playfair font-light text-5xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight"
-        >
-          The menu.
-        </h1>
-        <p className="font-barlow text-lg md:text-xl text-text-light/85 mt-6 max-w-2xl mx-auto">
-          Wood-fired flatbreads, slow-smoked wings, sandwiches built for the back nine, and a full
-          bar program. Served all day, every day we&apos;re open.
-        </p>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0"
+        style={{ clipPath: "polygon(0 0, 0 100%, 100% 100%)" }}
+      >
+        <div className="relative h-full w-full motion-safe:animate-ken-burns-soft">
+          <Image
+            src="/images/menus/food.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+      </div>
 
-        <div className="w-16 h-px bg-brand-accent mx-auto my-10" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0 bg-brand-green-dark"
+        style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%)" }}
+      >
+        <div className="relative h-full w-full translate-x-[15%] -translate-y-[14%] motion-safe:animate-ken-burns-soft">
+          <Image
+            src="/images/menus/drink.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+      </div>
 
-        <Button
-          href="/menu.pdf"
-          variant="ghost"
-          className="text-text-light"
-          external
-        >
-          Download Menu (PDF)
-        </Button>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-10 bg-brand-green-dark/35"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 z-10 h-48 bg-gradient-to-b from-brand-green-dark/75 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 z-10 h-64 bg-gradient-to-t from-brand-green-dark/60 to-transparent"
+      />
+
+      <svg
+        aria-hidden="true"
+        className="absolute inset-0 z-20 h-full w-full pointer-events-none"
+        preserveAspectRatio="none"
+        viewBox="0 0 100 100"
+      >
+        <line
+          x1="0"
+          y1="0"
+          x2="100"
+          y2="100"
+          stroke="#c9a84c"
+          strokeWidth="1.5"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+
+      <div
+        aria-hidden="true"
+        className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+      >
+        <Image
+          src="/images/menus/ptb-ball.png"
+          alt=""
+          width={324}
+          height={312}
+          className="h-20 w-auto md:h-28 drop-shadow-[0_6px_16px_rgba(0,0,0,0.45)]"
+        />
+      </div>
+
+      <div className="relative z-30 w-full max-w-4xl mx-auto px-6 md:px-12 pt-32 md:pt-40 pb-16 md:pb-20 min-h-[90vh] md:min-h-screen flex flex-col items-center justify-between text-center text-text-light">
+        <div>
+          <p className="eyebrow text-brand-accent text-xs md:text-sm mb-6">
+            Food &amp; Drink
+          </p>
+          <h1
+            id="menus-hero-headline"
+            className="font-playfair font-light text-5xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight"
+          >
+            The menu.
+          </h1>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <p className="font-barlow text-base md:text-lg text-text-light/90 max-w-2xl">
+            Wood-fired flatbreads, slow-smoked wings, sandwiches built for the back nine,
+            and a full bar program.
+          </p>
+          <div className="w-16 h-px bg-brand-accent my-8" />
+          <Button
+            href="/menu.pdf"
+            variant="ghost"
+            className="text-text-light"
+            external
+          >
+            Download Menu (PDF)
+          </Button>
+        </div>
       </div>
     </section>
   );
