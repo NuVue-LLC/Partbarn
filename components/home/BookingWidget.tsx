@@ -80,7 +80,7 @@ export default function BookingWidget() {
   return (
     <div
       id="hero-booking"
-      className="w-full max-w-5xl mx-auto bg-bg-cream/95 backdrop-blur-sm shadow-2xl border-t-2 border-brand-accent text-text-dark"
+      className="w-full bg-bg-cream/95 backdrop-blur-sm shadow-2xl border-t-2 border-brand-accent text-text-dark"
     >
       <div className="flex border-b border-text-dark/10" role="tablist" aria-label="Booking type">
         {tabs.map((t) => {
@@ -91,7 +91,7 @@ export default function BookingWidget() {
               role="tab"
               aria-selected={active}
               onClick={() => setTab(t.id)}
-              className={`flex-1 eyebrow text-sm py-4 px-4 transition-all duration-300 relative ${
+              className={`flex-1 eyebrow text-sm py-3 px-4 transition-all duration-300 relative ${
                 active
                   ? "text-text-dark"
                   : "text-text-dark/45 hover:text-text-dark/70"
@@ -108,110 +108,116 @@ export default function BookingWidget() {
         })}
       </div>
 
-      <form onSubmit={submit} className="p-6 md:p-8">
+      <form onSubmit={submit} className="px-5 md:px-6 py-5 md:py-6">
         {tab === "bay" && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 items-end">
-            <Field label="Date">
-              <input
-                type="date"
-                value={bay.date}
-                min={today}
-                onChange={(e) => setBay({ ...bay, date: e.target.value })}
-                className={inputClass}
-              />
-            </Field>
-            <Field label="Time">
-              <select
-                value={bay.time}
-                onChange={(e) => setBay({ ...bay, time: e.target.value })}
-                className={inputClass}
-              >
-                {times.map((t) => (
-                  <option key={t} value={t}>{format12(t)}</option>
-                ))}
-              </select>
-            </Field>
-            <Field label="Party">
-              <select
-                value={bay.party}
-                onChange={(e) => setBay({ ...bay, party: Number(e.target.value) })}
-                className={inputClass}
-              >
-                {[1, 2, 3, 4, 5, 6].map((n) => (
-                  <option key={n} value={n}>{n}</option>
-                ))}
-              </select>
-            </Field>
+          <div className="flex flex-col gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <Field label="Date">
+                <input
+                  type="date"
+                  value={bay.date}
+                  min={today}
+                  onChange={(e) => setBay({ ...bay, date: e.target.value })}
+                  className={inputClass}
+                />
+              </Field>
+              <Field label="Time">
+                <select
+                  value={bay.time}
+                  onChange={(e) => setBay({ ...bay, time: e.target.value })}
+                  className={inputClass}
+                >
+                  {times.map((t) => (
+                    <option key={t} value={t}>{format12(t)}</option>
+                  ))}
+                </select>
+              </Field>
+              <Field label="Party">
+                <select
+                  value={bay.party}
+                  onChange={(e) => setBay({ ...bay, party: Number(e.target.value) })}
+                  className={inputClass}
+                >
+                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <option key={n} value={n}>{n}</option>
+                  ))}
+                </select>
+              </Field>
+            </div>
             <button type="submit" className={submitClass}>Search Availability</button>
           </div>
         )}
 
         {tab === "table" && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 items-end">
-            <Field label="Date">
-              <input
-                type="date"
-                value={table.date}
-                min={today}
-                onChange={(e) => setTable({ ...table, date: e.target.value })}
-                className={inputClass}
-              />
-            </Field>
-            <Field label="Time">
-              <select
-                value={table.time}
-                onChange={(e) => setTable({ ...table, time: e.target.value })}
-                className={inputClass}
-              >
-                {times.map((t) => (
-                  <option key={t} value={t}>{format12(t)}</option>
-                ))}
-              </select>
-            </Field>
-            <Field label="Party">
-              <select
-                value={table.party}
-                onChange={(e) => setTable({ ...table, party: Number(e.target.value) })}
-                className={inputClass}
-              >
-                {Array.from({ length: 12 }, (_, i) => i + 1).map((n) => (
-                  <option key={n} value={n}>{n}</option>
-                ))}
-              </select>
-            </Field>
+          <div className="flex flex-col gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <Field label="Date">
+                <input
+                  type="date"
+                  value={table.date}
+                  min={today}
+                  onChange={(e) => setTable({ ...table, date: e.target.value })}
+                  className={inputClass}
+                />
+              </Field>
+              <Field label="Time">
+                <select
+                  value={table.time}
+                  onChange={(e) => setTable({ ...table, time: e.target.value })}
+                  className={inputClass}
+                >
+                  {times.map((t) => (
+                    <option key={t} value={t}>{format12(t)}</option>
+                  ))}
+                </select>
+              </Field>
+              <Field label="Party">
+                <select
+                  value={table.party}
+                  onChange={(e) => setTable({ ...table, party: Number(e.target.value) })}
+                  className={inputClass}
+                >
+                  {Array.from({ length: 12 }, (_, i) => i + 1).map((n) => (
+                    <option key={n} value={n}>{n}</option>
+                  ))}
+                </select>
+              </Field>
+            </div>
             <button type="submit" className={submitClass}>Search Availability</button>
           </div>
         )}
 
         {tab === "event" && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-end">
-            <Field label="Event Type">
-              <select
-                value={event.type}
-                onChange={(e) => setEvent({ ...event, type: e.target.value })}
-                className={inputClass}
-              >
-                {eventTypes.map((t) => (
-                  <option key={t} value={t}>{t}</option>
-                ))}
-              </select>
-            </Field>
-            <Field label="Guests">
-              <select
-                value={event.guests}
-                onChange={(e) => setEvent({ ...event, guests: e.target.value })}
-                className={inputClass}
-              >
-                {guestRanges.map((g) => (
-                  <option key={g} value={g}>{g}</option>
-                ))}
-              </select>
-            </Field>
+          <div className="flex flex-col gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <Field label="Event Type">
+                <select
+                  value={event.type}
+                  onChange={(e) => setEvent({ ...event, type: e.target.value })}
+                  className={inputClass}
+                >
+                  {eventTypes.map((t) => (
+                    <option key={t} value={t}>{t}</option>
+                  ))}
+                </select>
+              </Field>
+              <Field label="Guests">
+                <select
+                  value={event.guests}
+                  onChange={(e) => setEvent({ ...event, guests: e.target.value })}
+                  className={inputClass}
+                >
+                  {guestRanges.map((g) => (
+                    <option key={g} value={g}>{g}</option>
+                  ))}
+                </select>
+              </Field>
+            </div>
             <button type="submit" className={submitClass}>Plan Your Event</button>
           </div>
         )}
 
-        <p className="font-barlow text-xs text-text-dark/55 mt-5 leading-relaxed">
+        <p className="font-barlow text-xs text-text-dark/55 mt-4 leading-relaxed text-center">
           {microcopy[tab]}
         </p>
       </form>
@@ -221,18 +227,18 @@ export default function BookingWidget() {
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <label className="flex flex-col gap-1.5">
-      <span className="eyebrow text-[11px] text-text-dark/70">{label}</span>
+    <label className="flex flex-col gap-1">
+      <span className="eyebrow text-[10px] text-text-dark/60">{label}</span>
       {children}
     </label>
   );
 }
 
 const inputClass =
-  "w-full bg-white/80 border border-text-dark/15 px-4 py-3 font-barlow text-text-dark text-sm focus:outline-none focus:border-brand-accent transition-colors rounded-none";
+  "w-full bg-white/80 border border-text-dark/15 px-3 py-2.5 font-barlow text-text-dark text-sm focus:outline-none focus:border-brand-accent transition-colors rounded-none";
 
 const submitClass =
-  "w-full md:w-auto eyebrow text-sm bg-brand-accent text-text-dark px-6 py-3.5 hover:bg-brand-accent-dark hover:-translate-y-0.5 transition-all duration-300 shadow-sm hover:shadow-md";
+  "w-full eyebrow text-sm bg-brand-accent text-text-dark px-6 py-3 hover:bg-brand-accent-dark hover:-translate-y-0.5 transition-all duration-300 shadow-sm hover:shadow-md";
 
 function format12(t: string) {
   const [h, m] = t.split(":").map(Number);
