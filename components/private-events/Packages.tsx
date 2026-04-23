@@ -98,8 +98,8 @@ function PackageCard({ pkg }: { pkg: Package }) {
   const isHighlighted = pkg.highlighted;
 
   const wrapperClass = isHighlighted
-    ? "relative h-full bg-brand-green-dark text-text-light border-t-[3px] border-brand-accent shadow-xl"
-    : "relative h-full bg-bg-cream text-text-dark border-t border-text-dark/10 shadow-sm";
+    ? "relative h-full bg-brand-green-dark text-text-light border-t-[3px] border-brand-accent shadow-xl transition-transform duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl"
+    : "relative h-full bg-bg-cream text-text-dark border-t border-text-dark/10 shadow-sm transition-transform duration-300 ease-out hover:-translate-y-2 hover:shadow-lg";
 
   const dividerClass = isHighlighted ? "border-text-light/15" : "border-text-dark/10";
   const eyebrowMuted = isHighlighted ? "text-text-light/55" : "text-text-dark/55";
