@@ -339,16 +339,19 @@ function RatesSection() {
 
 const discounts = [
   {
+    value: "10%",
     label: "Seniors (65+)",
-    detail: "10% off off-peak rates with valid ID.",
+    detail: "Off off-peak rates with valid ID.",
   },
   {
+    value: "15%",
     label: "Veterans",
-    detail: "15% off any time, all year. Thank you for your service.",
+    detail: "Off any time, all year. Thank you for your service.",
   },
   {
+    value: "$30",
     label: "Callaway Club Rental",
-    detail: "$30 per set. Full set of Callaway clubs, yours for the session.",
+    detail: "Per set. Full Callaway clubs, yours for the session.",
   },
 ];
 
@@ -364,15 +367,17 @@ function DiscountsSection() {
           </div>
         </FadeUp>
 
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        <ul className="grid grid-cols-1 md:grid-cols-3 border-t border-text-dark/15 md:divide-x md:divide-text-dark/15">
           {discounts.map((d, i) => (
             <FadeUp key={d.label} delay={i * 0.08} as="li">
-              <div className="flex flex-col items-start gap-3 border-t border-text-dark/15 pt-5">
-                <FlagIcon className="mt-0" />
-                <p className="eyebrow text-text-dark text-xs tracking-[0.25em]">
+              <div className="flex flex-col pt-8 pb-8 md:pb-0 md:px-10 first:pl-0 last:pr-0 border-b md:border-b-0 border-text-dark/15 last:border-b-0">
+                <p className="font-playfair font-normal text-5xl md:text-6xl text-text-dark leading-none mb-4">
+                  {d.value}
+                </p>
+                <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] mb-3">
                   {d.label}
                 </p>
-                <p className="font-barlow text-text-dark/80 text-sm md:text-base leading-[1.65] max-w-xs">
+                <p className="font-barlow text-text-dark/75 text-sm md:text-base leading-[1.65]">
                   {d.detail}
                 </p>
               </div>
