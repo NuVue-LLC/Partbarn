@@ -549,27 +549,27 @@ const faqs = [
 
 function FaqSection() {
   return (
-    <section className="relative bg-bg-off py-24 md:py-28 overflow-hidden">
+    <section className="relative py-24 md:py-28 overflow-hidden" style={{ backgroundColor: "#1e3d1a" }}>
       <PaperTexture />
       <div className="relative max-w-3xl mx-auto px-6 md:px-12">
         <FadeUp>
           <div className="text-center mb-14">
             <p className="eyebrow text-brand-accent text-sm mb-3">Frequently Asked</p>
             <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto mb-6" />
-            <h2 className="font-playfair font-normal text-3xl md:text-5xl text-text-dark leading-[1.1]">
+            <h2 className="font-playfair font-normal text-3xl md:text-5xl text-text-light leading-[1.1]">
               The details, answered.
             </h2>
           </div>
         </FadeUp>
 
-        <ul className="divide-y divide-text-dark/15 border-y border-text-dark/15">
+        <ul className="divide-y divide-text-light/20 border-y border-text-light/20">
           {faqs.map((f, i) => (
             <FadeUp key={f.q} delay={i * 0.05} as="li">
               <div className="py-8">
-                <p className="font-playfair italic text-text-dark text-xl md:text-2xl leading-snug mb-3">
+                <p className="font-playfair italic text-text-light text-xl md:text-2xl leading-snug mb-3">
                   {f.q}
                 </p>
-                <p className="font-barlow text-text-dark/80 text-sm md:text-base leading-[1.7] max-w-2xl">
+                <p className="font-barlow text-text-light/75 text-sm md:text-base leading-[1.7] max-w-2xl">
                   {f.a}
                 </p>
               </div>
@@ -585,9 +585,19 @@ function FaqSection() {
 
 function TalkToUsSection() {
   return (
-    <section className="relative bg-bg-cream py-24 md:py-28 overflow-hidden">
-      <PaperTexture />
-      <div className="relative max-w-3xl mx-auto px-6 md:px-12 text-center">
+    <section className="relative py-32 md:py-40 overflow-hidden">
+      <Image
+        src="/images/gallery/cocktail.jpg"
+        alt="Signature cocktail at The ParT Barn"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: "rgba(30, 61, 26, 0.72)" }}
+      />
+      <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-12 text-center">
         <FadeUp>
           <p className="eyebrow text-brand-accent text-sm mb-3">Still thinking</p>
         </FadeUp>
@@ -595,12 +605,12 @@ function TalkToUsSection() {
           <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto mb-6" />
         </FadeUp>
         <FadeUp delay={0.14}>
-          <h2 className="font-playfair font-normal text-4xl md:text-6xl text-text-dark leading-[1.05] mb-6">
+          <h2 className="font-playfair font-normal text-4xl md:text-6xl text-text-light leading-[1.05] mb-6">
             Still have questions? Talk to us.
           </h2>
         </FadeUp>
         <FadeUp delay={0.22}>
-          <p className="font-barlow text-text-dark/85 text-base md:text-lg leading-[1.7] max-w-xl mx-auto mb-10">
+          <p className="font-barlow text-text-light/80 text-base md:text-lg leading-[1.7] max-w-xl mx-auto mb-10">
             A real person, on the phone or over email, is the fastest way to figure out
             which tier fits. We&apos;ll walk you through it.
           </p>
@@ -609,14 +619,14 @@ function TalkToUsSection() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-x-8 gap-y-4 mb-10">
             <a
               href={`tel:${BUSINESS.phoneRaw}`}
-              className="font-playfair text-text-dark text-2xl md:text-3xl hover:text-brand-accent transition-colors"
+              className="font-playfair text-text-light text-2xl md:text-3xl hover:text-brand-accent transition-colors"
             >
               {BUSINESS.phone}
             </a>
-            <span aria-hidden="true" className="hidden md:block h-6 w-px bg-text-dark/20" />
+            <span aria-hidden="true" className="hidden md:block h-6 w-px bg-text-light/30" />
             <a
               href={`mailto:${BUSINESS.email}`}
-              className="font-playfair italic text-text-dark text-xl md:text-2xl hover:text-brand-accent transition-colors"
+              className="font-playfair italic text-text-light text-xl md:text-2xl hover:text-brand-accent transition-colors"
             >
               {BUSINESS.email}
             </a>
@@ -633,7 +643,7 @@ function TalkToUsSection() {
             <Button
               href="mailto:partbarn@hoari.com?subject=Pricing%20inquiry"
               variant="ghost"
-              className="text-text-dark border-text-dark"
+              className="text-text-light border-text-light"
             >
               Contact Us
             </Button>
