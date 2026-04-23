@@ -1,19 +1,26 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function StickyBookCTA() {
+  const pathname = usePathname();
   const [show, setShow] = useState(false);
+  const suppressed = pathname?.startsWith("/private-events") ?? false;
 
   useEffect(() => {
+    if (suppressed) {
+      setShow(false);
+      return;
+    }
     const onScroll = () => {
       setShow(window.scrollY > window.innerHeight * 0.8);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [suppressed]);
 
   const scrollToTop = () => {
     const widget = document.getElementById("hero-booking");
