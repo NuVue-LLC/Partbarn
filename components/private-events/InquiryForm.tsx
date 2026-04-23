@@ -18,17 +18,6 @@ const guestRanges = ["8–20", "20–40", "40–80", "80–140", "140–220"];
 
 const budgetRanges = ["Under $2k", "$2–5k", "$5–10k", "$10k+", "Not sure yet"];
 
-const referralSources = [
-  "Google",
-  "Instagram",
-  "Facebook",
-  "Friend or Colleague",
-  "Drove by / Saw the Barn",
-  "Corporate Referral",
-  "Event Planner",
-  "Other",
-];
-
 function todayISO() {
   const d = new Date();
   const y = d.getFullYear();
@@ -46,7 +35,6 @@ type FormState = {
   eventDate: string;
   guestCount: string;
   budget: string;
-  referral: string;
   details: string;
 };
 
@@ -59,7 +47,6 @@ const initialState: FormState = {
   eventDate: "",
   guestCount: "",
   budget: "",
-  referral: "",
   details: "",
 };
 
@@ -81,24 +68,28 @@ export default function InquiryForm() {
     <section
       id="plan"
       aria-labelledby="plan-heading"
-      className="bg-bg-off py-24 md:py-32 scroll-mt-24"
+      className="bg-bg-off py-20 md:py-24 scroll-mt-24"
     >
       <div className="max-w-4xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-14 md:mb-16">
+        <div className="text-center mb-10 md:mb-12">
           <FadeUp>
             <p className="eyebrow text-brand-accent text-sm mb-5">Plan Your Event</p>
           </FadeUp>
           <FadeUp delay={0.08}>
-            <h2
-              id="plan-heading"
-              className="font-playfair font-normal text-4xl md:text-6xl text-text-dark leading-[1.1] mb-6"
-            >
-              Tell us about your event.
-            </h2>
+            <div className="flex items-center justify-center gap-5">
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+              <h2
+                id="plan-heading"
+                className="font-playfair italic font-normal text-3xl md:text-5xl text-text-dark leading-none"
+              >
+                Tell us about it.
+              </h2>
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+            </div>
           </FadeUp>
           <FadeUp delay={0.16}>
-            <p className="font-barlow text-text-dark/80 text-base md:text-lg leading-[1.7] max-w-2xl mx-auto">
-              The more you share, the faster and more useful our response. We aim to reply
+            <p className="font-barlow text-text-dark/80 text-sm md:text-base leading-[1.7] max-w-xl mx-auto mt-6">
+              A few details help us shape the fastest, most useful response. We aim to reply
               within one business day.
             </p>
           </FadeUp>
@@ -124,9 +115,9 @@ export default function InquiryForm() {
             <form
               onSubmit={submit}
               noValidate
-              className="bg-bg-cream border-t-2 border-brand-accent shadow-sm p-6 md:p-10"
+              className="bg-bg-cream border-t-2 border-brand-accent shadow-sm p-6 md:p-8"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 <Field label="First Name" htmlFor="first-name" required>
                   <input
                     id="first-name"
@@ -223,35 +214,20 @@ export default function InquiryForm() {
                   </select>
                 </Field>
                 <div className="md:col-span-2">
-                  <Field label="How Did You Hear About Us?" htmlFor="referral">
-                    <select
-                      id="referral"
-                      value={form.referral}
-                      onChange={(e) => update("referral", e.target.value)}
-                      className={inputClass}
-                    >
-                      <option value="" disabled>Select…</option>
-                      {referralSources.map((r) => (
-                        <option key={r} value={r}>{r}</option>
-                      ))}
-                    </select>
-                  </Field>
-                </div>
-                <div className="md:col-span-2">
                   <Field label="Event Details" htmlFor="details">
                     <textarea
                       id="details"
-                      rows={6}
+                      rows={3}
                       value={form.details}
                       onChange={(e) => update("details", e.target.value)}
-                      placeholder="Format (seated dinner, cocktail reception, bay tournament), must-haves, dietary notes, anything else we should know."
-                      className={`${inputClass} resize-y min-h-[140px]`}
+                      placeholder="Format (seated dinner, cocktail reception, bay tournament), must-haves, dietary notes, anything else."
+                      className={`${inputClass} resize-y min-h-[100px]`}
                     />
                   </Field>
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <p className="font-barlow text-text-dark/60 text-xs leading-relaxed max-w-md">
                   We&apos;ll only use your info to reply to this inquiry.
                 </p>
@@ -290,7 +266,7 @@ function Field({
 }
 
 const inputClass =
-  "w-full bg-white/80 border border-text-dark/15 px-4 py-3 font-barlow text-text-dark text-sm focus:outline-none focus:border-brand-accent transition-colors rounded-none";
+  "w-full bg-white/80 border border-text-dark/15 px-3 py-2.5 font-barlow text-text-dark text-sm focus:outline-none focus:border-brand-accent transition-colors rounded-none";
 
 const submitClass =
   "inline-flex items-center justify-center eyebrow text-sm bg-brand-accent text-text-dark px-8 py-4 hover:bg-brand-accent-dark hover:-translate-y-0.5 transition-all duration-300 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2";

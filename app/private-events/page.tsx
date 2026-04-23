@@ -20,12 +20,12 @@ export default function Page() {
     <>
       <Hero />
       <CapacityStrip />
-      <InquiryForm />
       <WhatYouCanHost />
       <TheSpace />
       <Packages />
       <MenuCustomization />
       <Testimonials />
+      <InquiryForm />
       <FaqAndCTAs />
       <StickyPlanCTA />
     </>
