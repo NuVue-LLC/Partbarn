@@ -38,6 +38,132 @@ function FlagIcon({ className = "" }: { className?: string }) {
   );
 }
 
+// ========== HOLE 19 MOTIF ==========
+
+function Hole19Motif() {
+  // Par-3 "19th hole" — short hole, large welcoming green, clubhouse building top-right.
+  // Rendered in brand-green-dark over cream background at low opacity.
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 1200 900"
+      preserveAspectRatio="xMidYMid slice"
+      className="pointer-events-none absolute inset-0 w-full h-full text-brand-green-dark"
+    >
+      {/* Compass — top-left */}
+      <g transform="translate(80 80)" stroke="currentColor" strokeWidth="0.9" fill="none">
+        <circle cx="0" cy="0" r="22" />
+        <line x1="0" y1="-22" x2="0" y2="-12" strokeWidth="1.2" />
+        <line x1="0" y1="22" x2="0" y2="12" />
+        <line x1="-22" y1="0" x2="-12" y2="0" />
+        <line x1="22" y1="0" x2="12" y2="0" />
+        <text x="0" y="-30" textAnchor="middle" fontSize="9" fontFamily="sans-serif" fill="currentColor" stroke="none" letterSpacing="1">N</text>
+      </g>
+
+      {/* Hole label */}
+      <text x="80" y="200" fontSize="10" fill="currentColor" stroke="none" letterSpacing="2" fontFamily="sans-serif">HOLE</text>
+      <text x="76" y="262" fontSize="64" fill="none" stroke="currentColor" strokeWidth="0.9" fontFamily="serif" letterSpacing="-1">19</text>
+      <text x="80" y="284" fontSize="10" fill="currentColor" stroke="none" letterSpacing="2" fontFamily="sans-serif">PAR · 3</text>
+      <line x1="80" y1="296" x2="250" y2="296" stroke="currentColor" strokeWidth="0.7" />
+
+      {/* Tee box */}
+      <rect x="95" y="450" width="68" height="38" fill="currentColor" fillOpacity="0.35" stroke="currentColor" strokeWidth="0.9" />
+
+      {/* Fairway — short wide corridor tee to green */}
+      <path
+        d="M 130 450 C 200 430, 460 420, 720 400
+           C 720 460, 460 490, 130 488 Z"
+        fill="currentColor"
+        fillOpacity="0.11"
+        stroke="currentColor"
+        strokeWidth="0.9"
+      />
+
+      {/* Green — large welcoming oval */}
+      <ellipse cx="870" cy="430" rx="150" ry="115"
+        fill="currentColor" fillOpacity="0.22"
+        stroke="currentColor" strokeWidth="1.4"
+      />
+      {/* Inner contour */}
+      <ellipse cx="870" cy="430" rx="115" ry="86"
+        fill="none" stroke="currentColor" strokeWidth="0.7" strokeDasharray="4 3"
+      />
+
+      {/* Left-side bunker */}
+      <path
+        d="M 722 470 C 700 458, 698 492, 730 500 C 754 506, 762 480, 722 470 Z"
+        fill="currentColor" fillOpacity="0.22"
+        stroke="currentColor" strokeWidth="0.9"
+      />
+      {/* Back-right bunker */}
+      <path
+        d="M 890 300 C 870 284, 935 272, 952 294 C 960 308, 940 324, 890 300 Z"
+        fill="currentColor" fillOpacity="0.22"
+        stroke="currentColor" strokeWidth="0.9"
+      />
+
+      {/* Flag pole + pennant */}
+      <line x1="858" y1="430" x2="858" y2="322" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M 858 322 L 914 340 L 858 358 Z" fill="currentColor" fillOpacity="0.65" />
+      <circle cx="858" cy="433" r="5" fill="currentColor" fillOpacity="0.45" />
+
+      {/* Clubhouse building — top-right, the actual 19th hole */}
+      <rect x="968" y="76" width="192" height="152"
+        fill="none" stroke="currentColor" strokeWidth="1.2"
+      />
+      {/* Roofline */}
+      <line x1="968" y1="76" x2="1064" y2="38" stroke="currentColor" strokeWidth="0.9" />
+      <line x1="1160" y1="76" x2="1064" y2="38" stroke="currentColor" strokeWidth="0.9" />
+      {/* Windows */}
+      <rect x="990" y="108" width="28" height="22" fill="currentColor" fillOpacity="0.14" stroke="currentColor" strokeWidth="0.7" />
+      <rect x="1038" y="108" width="28" height="22" fill="currentColor" fillOpacity="0.14" stroke="currentColor" strokeWidth="0.7" />
+      <rect x="1086" y="108" width="28" height="22" fill="currentColor" fillOpacity="0.14" stroke="currentColor" strokeWidth="0.7" />
+      <rect x="1112" y="108" width="28" height="22" fill="currentColor" fillOpacity="0.14" stroke="currentColor" strokeWidth="0.7" />
+      {/* Door */}
+      <rect x="1046" y="182" width="28" height="36" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="0.7" />
+      {/* Label */}
+      <text x="1064" y="30" textAnchor="middle" fontSize="9" fill="currentColor" stroke="none" letterSpacing="1.5" fontFamily="sans-serif">CLUBHOUSE</text>
+
+      {/* Dotted path from green up to clubhouse */}
+      <path
+        d="M 968 228 C 948 300, 924 370, 870 430"
+        fill="none" stroke="currentColor" strokeWidth="0.9" strokeDasharray="3 3"
+      />
+
+      {/* Scale ruler — bottom-right */}
+      <g transform="translate(880 830)" stroke="currentColor" strokeWidth="0.8" fill="none">
+        <line x1="0" y1="0" x2="200" y2="0" />
+        <line x1="0" y1="-6" x2="0" y2="6" />
+        <line x1="100" y1="-4" x2="100" y2="4" />
+        <line x1="200" y1="-6" x2="200" y2="6" />
+        <text x="0" y="18" textAnchor="middle" fontSize="9" fill="currentColor" stroke="none" fontFamily="sans-serif">0</text>
+        <text x="100" y="18" textAnchor="middle" fontSize="9" fill="currentColor" stroke="none" fontFamily="sans-serif">50</text>
+        <text x="200" y="18" textAnchor="middle" fontSize="9" fill="currentColor" stroke="none" fontFamily="sans-serif">100 YD</text>
+      </g>
+    </svg>
+  );
+}
+
+// ========== PHOTO BREAK ==========
+
+function PhotoBreak() {
+  return (
+    <div className="relative w-full min-h-[50vh] md:min-h-[56vh] overflow-hidden">
+      <Image
+        src="/images/bar/main-bar.jpg"
+        alt="The bar at The ParT Barn — golden hour, warm wood, green stools"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: "rgba(30, 61, 26, 0.30)" }}
+      />
+    </div>
+  );
+}
+
 // ========== HERO ==========
 
 function PricingHero() {
@@ -238,6 +364,9 @@ function TiersSection() {
   return (
     <section className="relative bg-bg-cream pt-8 pb-24 md:pb-28 overflow-hidden">
       <PaperTexture />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
+        <Hole19Motif />
+      </div>
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
         <FadeUp>
           <div className="text-center mb-12 md:mb-16">
@@ -520,6 +649,7 @@ export default function PricingPage() {
     <>
       <PricingHero />
       <TiersSection />
+      <PhotoBreak />
       <RatesSection />
       <DiscountsSection />
       <FaqSection />
