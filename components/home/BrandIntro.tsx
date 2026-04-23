@@ -3,8 +3,13 @@ import FadeUp from "@/components/ui/FadeUp";
 
 export default function BrandIntro() {
   return (
-    <section className="bg-bg-cream py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
+    <section className="relative bg-bg-cream py-24 md:py-32 overflow-hidden">
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-brand-accent/60" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-brand-green-dark/45 to-transparent pointer-events-none"
+      />
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-7 order-2 lg:order-1">
             <FadeUp>
