@@ -81,7 +81,7 @@ const polaroids: Polaroid[] = [
     z: 6,
   },
   {
-    phrase: "Birthdays from 8 to 220.",
+    phrase: "A room built for the whole group.",
     src: "/images/events/birthdays.jpg",
     alt: "A signature martini garnished with a mini golf ball at The ParT Barn bar",
     aspect: "aspect-[4/5]",

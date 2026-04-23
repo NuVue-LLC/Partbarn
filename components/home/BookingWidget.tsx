@@ -15,7 +15,7 @@ const tabs: { id: Tab; label: string }[] = [
 const microcopy: Record<Tab, string> = {
   bay: "Up to 6 per bay. Food and drinks brought to you while you play.",
   table: "The kitchen runs till 10. Full bar, Barlow-perfect pours.",
-  event: "Host 8 to 220. Custom menus, bays reserved, the night shaped around your group.",
+  event: "A room built for the whole group. Custom menus, bays reserved, the night shaped around you.",
 };
 
 const eventTypes = [

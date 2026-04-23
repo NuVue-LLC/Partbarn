@@ -76,7 +76,7 @@ export default function PrivateEventsPreview() {
           </FadeUp>
           <FadeUp delay={0.08}>
             <h2 className="font-playfair font-normal text-4xl md:text-6xl text-text-dark leading-[1.1] mb-6">
-              Host 8 or host 220.
+              A room built for the whole group.
             </h2>
           </FadeUp>
           <FadeUp delay={0.16}>
