@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #2d5a27;
+  --color-brand-green-dark: #1e3d1a;
+  --color-brand-accent: #c9a84c;
+  --color-brand-accent-dark: #b8963d;
+
+  --color-bg-cream: #f5f0e8;
+  --color-bg-off: #eae4d6;
+
+  --color-text-dark: #1a2e18;
+  --color-text-light: #f5f0e8;
+
+  --font-playfair: var(--font-playfair);
+  --font-barlow: var(--font-barlow);
+  --font-barlow-condensed: var(--font-barlow-condensed);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f5f0e8;
+  color: #1a2e18;
+  font-family: var(--font-barlow), system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #c9a84c;
+  color: #1a2e18;
+}
+
+.eyebrow {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-barlow {
+  font-family: var(--font-barlow), system-ui, sans-serif;
+}
+
+.font-barlow-condensed {
+  font-family: var(--font-barlow-condensed), sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background-color: #1e3d1a;
+  color: #f5f0e8;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+.animate-ken-burns {
+  animation: ken-burns 8s linear infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes ken-burns-soft {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.03); }
+}
+.animate-ken-burns-soft {
+  animation: ken-burns-soft 12s linear infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+.animate-scroll-hint {
+  animation: scroll-hint 2s ease-in-out infinite;
+}
