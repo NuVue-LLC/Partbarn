@@ -7,7 +7,8 @@ export default function Hero() {
       className="relative min-h-[85vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden"
     >
       <video
-        className="absolute inset-0 z-0 h-full w-full object-cover"
+        className="absolute left-0 right-0 top-0 z-0 w-full object-cover"
+        style={{ height: "calc(100% + 60px)" }}
         autoPlay
         muted
         loop
@@ -19,7 +20,10 @@ export default function Hero() {
       </video>
       <div
         className="absolute inset-0 z-10"
-        style={{ backgroundColor: "rgba(15, 30, 13, 0.8)" }}
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(15, 30, 13, 0.2) 0%, rgba(15, 30, 13, 0.5) 55%, rgba(15, 30, 13, 0.45) 100%)",
+        }}
       />
 
       <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-16 flex flex-col items-center text-center text-text-light">

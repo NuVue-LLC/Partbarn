@@ -21,7 +21,7 @@ export default function BrandIntro() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-brand-green-dark/45 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-gradient-to-b from-brand-green-dark/75 via-brand-green-dark/25 to-transparent"
       />
       <div
         aria-hidden="true"
