@@ -562,7 +562,7 @@ const discounts = [
 
 function DiscountsSection() {
   return (
-    <section className="relative bg-bg-cream py-24 md:py-28 overflow-hidden">
+    <section className="relative bg-bg-cream py-24 md:py-32 overflow-hidden">
       <PaperTexture />
 
       {/* Gold gradient top/bottom rules */}
@@ -576,7 +576,7 @@ function DiscountsSection() {
       />
 
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 md:mb-20">
           <FadeUp>
             <p className="eyebrow text-brand-accent text-sm mb-5">Discounts &amp; Extras</p>
           </FadeUp>
@@ -591,23 +591,42 @@ function DiscountsSection() {
           </FadeUp>
         </div>
 
-        <ul className="grid grid-cols-1 md:grid-cols-3 border-t border-text-dark/15 md:divide-x md:divide-text-dark/15">
+        {/* Three discount pillars — matching the Rates section treatment */}
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-y-14 md:gap-y-0 relative">
           {discounts.map((d, i) => (
-            <FadeUp key={d.label} delay={i * 0.08} as="li">
-              <div className="flex flex-col pt-8 pb-8 md:pb-0 md:px-10 first:pl-0 last:pr-0 border-b md:border-b-0 border-text-dark/15 last:border-b-0">
-                <p className="font-playfair font-normal text-5xl md:text-6xl text-text-dark leading-none mb-4">
+            <FadeUp key={d.label} delay={i * 0.12} as="li">
+              <div className="text-center md:px-6 relative">
+                <p className="font-playfair font-normal text-6xl md:text-7xl text-text-dark leading-none mb-5">
                   {d.value}
                 </p>
-                <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] mb-3">
+                <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] mb-4">
                   {d.label}
                 </p>
-                <p className="font-barlow text-text-dark/75 text-sm md:text-base leading-[1.65]">
+                <p className="font-barlow text-text-dark/75 text-sm md:text-base leading-[1.6] max-w-[240px] mx-auto">
                   {d.detail}
                 </p>
+                {i < discounts.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-28 bg-brand-accent/30"
+                  />
+                )}
               </div>
             </FadeUp>
           ))}
         </ul>
+
+        {/* Handwritten accent */}
+        <div className="mt-20 text-center">
+          <FadeUp delay={0.35}>
+            <p
+              className="font-caveat text-brand-accent text-3xl md:text-4xl leading-none"
+              style={{ transform: "rotate(-1.5deg)" }}
+            >
+              just mention it at the bar.
+            </p>
+          </FadeUp>
+        </div>
       </div>
     </section>
   );
