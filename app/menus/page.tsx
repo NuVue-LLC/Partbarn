@@ -1,10 +1,17 @@
-import StubPage from "@/components/layout/StubPage";
+import Hero from "@/components/menus/Hero";
+import MenuTabs from "@/components/menus/MenuTabs";
 
 export const metadata = {
   title: "Menus | The ParT Barn",
-  description: "Wood-fired flatbreads, slow-smoked wings, full bar program.",
+  description:
+    "Wood-fired flatbreads, slow-smoked wings, sandwiches, entrées, signature cocktails, and a full bar program at The ParT Barn.",
 };
 
 export default function Page() {
-  return <StubPage title="Menus" />;
+  return (
+    <>
+      <Hero />
+      <MenuTabs />
+    </>
+  );
 }
