@@ -199,8 +199,8 @@ function PricingHero() {
       {/* Background image */}
       <div className="absolute inset-0 z-0 motion-safe:animate-ken-burns">
         <Image
-          src="/images/bays/lounge.jpg"
-          alt="Warm lounge interior at The ParT Barn"
+          src="/images/gallery/bar-stools.jpg"
+          alt="The bar at The ParT Barn lined with green stools — the regulars' seats"
           fill
           priority
           sizes="100vw"
