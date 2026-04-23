@@ -196,30 +196,6 @@ function CourseHoleMotif() {
       preserveAspectRatio="xMidYMid slice"
       className="pointer-events-none absolute inset-0 w-full h-full text-brand-green-dark"
     >
-      {/* Scorecard tag — top-left */}
-      <g fill="currentColor">
-        <text
-          x="60"
-          y="60"
-          fontFamily="var(--font-playfair), serif"
-          fontStyle="italic"
-          fontSize="22"
-          fontWeight="500"
-        >
-          Hole No. 1
-        </text>
-        <text
-          x="60"
-          y="80"
-          fontFamily="var(--font-barlow-condensed), sans-serif"
-          fontSize="11"
-          letterSpacing="3"
-        >
-          PAR 4 · 412 YARDS · HCP 7
-        </text>
-        <line x1="60" y1="92" x2="240" y2="92" stroke="currentColor" strokeWidth="0.8" />
-      </g>
-
       {/* Compass mark */}
       <g
         transform="translate(1130 90)"

@@ -24,7 +24,7 @@ function Hole2Motif() {
     <svg
       aria-hidden="true"
       viewBox="0 0 1200 900"
-      preserveAspectRatio="xMidYMid slice"
+      preserveAspectRatio="xMinYMin slice"
       className="pointer-events-none absolute inset-0 w-full h-full text-bg-cream"
     >
       {/* Compass mark — top-right */}
@@ -241,27 +241,12 @@ function Hole2Motif() {
 export default function BaysSplit() {
   return (
     <section className="relative bg-brand-green-dark text-text-light py-20 md:py-24 overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.14]">
         <Hole2Motif />
       </div>
       <DarkTexture />
 
-      {/* Scorecard label — top-left */}
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12 mb-8 md:mb-10">
-        <FadeUp>
-          <div>
-            <p className="font-playfair italic font-medium text-text-light text-2xl md:text-3xl leading-none">
-              Hole No. 2
-            </p>
-            <p className="eyebrow text-brand-accent text-xs mt-2 tracking-[0.25em]">
-              Par 5 · 528 Yards · HCP 2
-            </p>
-            <span aria-hidden="true" className="block h-px w-44 bg-brand-accent mt-3" />
-          </div>
-        </FadeUp>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative max-w-7xl mx-auto px-6 md:px-12 pt-4 md:pt-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           {/* Copy column */}
           <div className="lg:col-span-6 order-2 lg:order-1 lg:pr-6 xl:pr-10">

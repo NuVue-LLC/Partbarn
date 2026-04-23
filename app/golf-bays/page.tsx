@@ -213,19 +213,6 @@ function BaysHero() {
       />
 
       <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-6 md:px-12 py-20 md:py-24 min-h-[85vh]">
-        {/* Scorecard label */}
-        <div className="max-w-7xl mx-auto w-full mb-12 md:mb-16">
-          <FadeUp>
-            <p className="font-playfair italic font-medium text-text-light text-2xl md:text-3xl leading-none">
-              Hole No. 2
-            </p>
-            <p className="eyebrow text-brand-accent text-xs mt-2 tracking-[0.25em]">
-              PAR 5 · 528 YARDS · HCP 2
-            </p>
-            <span aria-hidden="true" className="block h-px w-56 bg-brand-accent mt-3" />
-          </FadeUp>
-        </div>
-
         {/* Centered headline */}
         <div className="max-w-4xl mx-auto w-full text-center">
           <FadeUp delay={0.1}>

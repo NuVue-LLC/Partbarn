@@ -82,12 +82,6 @@ function Hole19Motif() {
         <text x="0" y="-30" textAnchor="middle" fontSize="9" fontFamily="sans-serif" fill="currentColor" stroke="none" letterSpacing="1">N</text>
       </g>
 
-      {/* Hole label */}
-      <text x="80" y="200" fontSize="10" fill="currentColor" stroke="none" letterSpacing="2" fontFamily="sans-serif">HOLE</text>
-      <text x="76" y="262" fontSize="64" fill="none" stroke="currentColor" strokeWidth="0.9" fontFamily="serif" letterSpacing="-1">19</text>
-      <text x="80" y="284" fontSize="10" fill="currentColor" stroke="none" letterSpacing="2" fontFamily="sans-serif">PAR · 3</text>
-      <line x1="80" y1="296" x2="250" y2="296" stroke="currentColor" strokeWidth="0.7" />
-
       {/* Tee box */}
       <rect x="95" y="450" width="68" height="38" fill="currentColor" fillOpacity="0.35" stroke="currentColor" strokeWidth="0.9" />
 
@@ -221,19 +215,6 @@ function PricingHero() {
 
       {/* Content */}
       <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-6 md:px-12 py-20 md:py-24 min-h-[85vh]">
-        {/* Scorecard label — upper left */}
-        <div className="max-w-7xl mx-auto w-full mb-12 md:mb-16">
-          <FadeUp>
-            <p className="font-playfair italic font-medium text-text-light text-2xl md:text-3xl leading-none">
-              Hole No. 19
-            </p>
-            <p className="eyebrow text-brand-accent text-xs mt-2 tracking-[0.25em]">
-              THE 19TH HOLE · WHERE MEMBERS GATHER
-            </p>
-            <span aria-hidden="true" className="block h-px w-56 bg-brand-accent mt-3" />
-          </FadeUp>
-        </div>
-
         {/* Centered headline block */}
         <div className="max-w-4xl mx-auto w-full text-center">
           <FadeUp delay={0.1}>

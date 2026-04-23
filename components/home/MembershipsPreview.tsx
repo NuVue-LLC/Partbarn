@@ -23,7 +23,7 @@ function Hole3Motif() {
     <svg
       aria-hidden="true"
       viewBox="0 0 1200 900"
-      preserveAspectRatio="xMidYMid slice"
+      preserveAspectRatio="xMinYMin slice"
       className="pointer-events-none absolute inset-0 w-full h-full text-brand-green-dark"
     >
       {/* Compass — top-right */}
@@ -337,21 +337,6 @@ export default function MembershipsPreview() {
         <Hole3Motif />
       </div>
       <PaperTexture />
-
-      {/* Scorecard label — top-left */}
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12 mb-10">
-        <FadeUp>
-          <div>
-            <p className="font-playfair italic font-medium text-text-dark text-2xl md:text-3xl leading-none">
-              Hole No. 3
-            </p>
-            <p className="eyebrow text-brand-accent text-xs mt-2 tracking-[0.25em]">
-              Par 3 · 168 Yards · HCP 14
-            </p>
-            <span aria-hidden="true" className="block h-px w-44 bg-brand-accent mt-3" />
-          </div>
-        </FadeUp>
-      </div>
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center max-w-3xl mx-auto mb-12">

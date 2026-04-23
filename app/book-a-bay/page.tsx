@@ -64,23 +64,6 @@ function BookABayHero() {
 
       <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-6 md:px-12 py-24 md:py-28 min-h-[55vh] md:min-h-[60vh]">
         <div className="max-w-4xl mx-auto w-full text-center">
-          {/* Scorecard label */}
-          <FadeUp>
-            <p className="font-playfair italic font-medium text-text-light text-2xl md:text-3xl leading-none">
-              Hole No. 2
-            </p>
-            <p className="eyebrow text-brand-accent text-xs mt-2 tracking-[0.25em]">
-              PAR 5 · 528 YARDS · HCP 2
-            </p>
-            <p className="font-barlow-condensed uppercase tracking-[0.15em] text-brand-accent text-xs mt-3">
-              Book Your Bay
-            </p>
-            <span
-              aria-hidden="true"
-              className="block h-px w-40 md:w-56 bg-brand-accent mx-auto mt-3 mb-10 md:mb-12"
-            />
-          </FadeUp>
-
           <FadeUp delay={0.1}>
             <p className="eyebrow text-brand-accent text-sm tracking-[0.25em] mb-4">
               Reservations
