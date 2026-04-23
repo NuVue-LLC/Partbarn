@@ -195,7 +195,7 @@ function BaysHero() {
   return (
     <section
       aria-labelledby="bays-hero-headline"
-      className="relative min-h-[75vh] w-full overflow-hidden flex flex-col"
+      className="relative min-h-[85vh] w-full overflow-hidden flex flex-col"
     >
       <div className="absolute inset-0 z-0 motion-safe:animate-ken-burns">
         <Image
@@ -212,7 +212,7 @@ function BaysHero() {
         style={{ backgroundColor: "rgba(30, 61, 26, 0.55)" }}
       />
 
-      <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-6 md:px-12 py-20 md:py-24 min-h-[75vh]">
+      <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-6 md:px-12 py-20 md:py-24 min-h-[85vh]">
         {/* Scorecard label */}
         <div className="max-w-7xl mx-auto w-full mb-12 md:mb-16">
           <FadeUp>

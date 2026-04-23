@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="private-events-hero-headline"
-      className="relative min-h-[75vh] w-full flex items-center justify-center overflow-hidden"
+      className="relative min-h-[85vh] w-full flex items-center justify-center overflow-hidden"
     >
       <div className="absolute inset-0 z-0 motion-safe:animate-ken-burns">
         <Image

@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="menus-hero-headline"
-      className="relative min-h-[75vh] w-full overflow-hidden"
+      className="relative min-h-[85vh] w-full overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -84,7 +84,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-30 w-full max-w-4xl mx-auto px-6 md:px-12 pt-24 md:pt-28 pb-12 md:pb-14 min-h-[75vh] flex flex-col items-center justify-between text-center text-text-light">
+      <div className="relative z-30 w-full max-w-4xl mx-auto px-6 md:px-12 pt-24 md:pt-28 pb-12 md:pb-14 min-h-[85vh] flex flex-col items-center justify-between text-center text-text-light">
         <div>
           <p className="eyebrow text-brand-accent text-xs md:text-sm mb-6">
             Food &amp; Drink
