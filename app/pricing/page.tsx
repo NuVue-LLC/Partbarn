@@ -333,8 +333,10 @@ const tiers: Tier[] = [
 function TierPlacard({ tier }: { tier: Tier }) {
   return (
     <div
-      className={`relative flex flex-col h-full bg-white shadow-[10px_18px_36px_-16px_rgba(26,46,24,0.4),3px_5px_10px_-4px_rgba(26,46,24,0.18)] ${
-        tier.highlight ? "lg:-translate-y-3" : ""
+      className={`relative flex flex-col h-full bg-white shadow-[10px_18px_36px_-16px_rgba(26,46,24,0.4),3px_5px_10px_-4px_rgba(26,46,24,0.18)] transition-all duration-300 ease-out hover:shadow-[18px_28px_54px_-16px_rgba(26,46,24,0.55),5px_8px_18px_-4px_rgba(26,46,24,0.28)] ${
+        tier.highlight
+          ? "lg:-translate-y-3 hover:-translate-y-5 lg:hover:-translate-y-6"
+          : "hover:-translate-y-2"
       }`}
     >
       {/* Dark green header */}
