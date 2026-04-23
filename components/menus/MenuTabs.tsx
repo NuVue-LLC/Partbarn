@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import FadeUp from "@/components/ui/FadeUp";
 
 type MenuItem = {
@@ -423,6 +424,11 @@ function TabButton({
 function FoodMenu() {
   return (
     <div className="space-y-20 md:space-y-28">
+      <MenuBanner
+        src="/images/menus/food.jpg"
+        alt="A composition of four signature plates at The ParT Barn — pan-seared fish, sirloin with mashed potatoes, filet mignon over broccolini, and sesame-ginger salmon"
+      />
+
       {FOOD.map((section) => (
         <SectionRenderer key={section.id} section={section} />
       ))}
@@ -439,12 +445,34 @@ function FoodMenu() {
 function DrinksMenu() {
   return (
     <div className="space-y-20 md:space-y-28">
+      <MenuBanner
+        src="/images/menus/drink.jpg"
+        alt="A signature cocktail with grape garnish on the bar at The ParT Barn, green backbar bottles glowing behind"
+      />
+
       {DRINKS.map((section) => (
         <SectionRenderer key={section.id} section={section} />
       ))}
 
       <HappyHourCallout />
     </div>
+  );
+}
+
+function MenuBanner({ src, alt }: { src: string; alt: string }) {
+  return (
+    <FadeUp>
+      <div className="relative aspect-[16/9] overflow-hidden">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 1024px, 100vw"
+          className="object-cover"
+          priority
+        />
+      </div>
+    </FadeUp>
   );
 }
 
