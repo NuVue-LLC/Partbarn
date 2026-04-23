@@ -23,7 +23,7 @@ export default function Hero() {
       />
 
       <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 pt-24 pb-12 flex flex-col items-center text-center text-text-light">
-        <p className="eyebrow text-text-light/85 text-xs md:text-sm mb-6">
+        <p className="eyebrow text-brand-accent text-xs md:text-sm mb-6">
           Private Events · Buyouts · Bay Tournaments
         </p>
         <h1
