@@ -641,7 +641,7 @@ function FaqSection() {
         className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
       />
 
-      <div className="relative max-w-3xl mx-auto px-6 md:px-12">
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <FadeUp>
             <p className="eyebrow text-brand-accent text-sm mb-5">Frequently Asked</p>
@@ -657,14 +657,14 @@ function FaqSection() {
           </FadeUp>
         </div>
 
-        <ul className="divide-y divide-text-dark/15 border-y border-text-dark/15">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-16 border-t border-text-dark/15">
           {faqs.map((f, i) => (
             <FadeUp key={f.q} delay={i * 0.05} as="li">
-              <div className="py-8">
+              <div className="py-8 border-b border-text-dark/15 h-full">
                 <p className="font-playfair italic text-text-dark text-xl md:text-2xl leading-snug mb-3">
                   {f.q}
                 </p>
-                <p className="font-barlow text-text-dark/80 text-sm md:text-base leading-[1.7] max-w-2xl">
+                <p className="font-barlow text-text-dark/80 text-sm md:text-base leading-[1.7]">
                   {f.a}
                 </p>
               </div>
