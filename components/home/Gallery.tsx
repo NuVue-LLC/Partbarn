@@ -27,34 +27,14 @@ const photos: Photo[] = [
     shape: "square",
   },
   {
-    src: "/images/gallery/bar-overhead.jpg",
-    alt: "The bar at The ParT Barn from above — TVs lit and stools lined up",
-    shape: "wide",
-  },
-  {
     src: "/images/gallery/dining-wall.jpg",
     alt: "Dining tables and the framed photo wall lit in green at The ParT Barn",
     shape: "landscape",
   },
   {
-    src: "/images/events/birthdays.jpg",
-    alt: "A signature martini garnished with a mini golf ball at the bar",
-    shape: "portrait",
-  },
-  {
-    src: "/images/gallery/retail.jpg",
-    alt: "The pro shop counter at The ParT Barn with branded gear on display",
-    shape: "wide",
-  },
-  {
     src: "/images/gallery/sliders.jpg",
     alt: "A trio of sliders and a flatbread set in front of an active simulator",
     shape: "landscape",
-  },
-  {
-    src: "/images/gallery/two-plates-overhead.jpg",
-    alt: "An overhead view of the salmon and sirloin plates with red and white wine",
-    shape: "wide",
   },
   {
     src: "/images/bar/main-bar.jpg",
@@ -72,8 +52,8 @@ const shapeClass: Record<Photo["shape"], string> = {
 
 export default function Gallery() {
   return (
-    <section className="bg-brand-green-dark text-text-light py-24 md:py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12">
+    <section className="bg-brand-green-dark text-text-light pt-20 md:pt-24 pb-14 md:pb-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-10">
         <FadeUp>
           <p className="eyebrow text-brand-accent text-sm mb-5 text-center">
             Inside ParT Barn
@@ -88,8 +68,8 @@ export default function Gallery() {
 
       <FadeUp delay={0.2}>
         <motion.div
-          className="flex gap-4 px-6 md:px-12 overflow-x-auto snap-x snap-mandatory pb-6"
-          style={{ scrollbarWidth: "thin", scrollbarColor: "#c9a84c66 transparent" }}
+          className="no-scrollbar flex gap-4 px-6 md:px-12 overflow-x-auto snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none" }}
         >
           {photos.map((p) => (
             <div
@@ -108,6 +88,10 @@ export default function Gallery() {
           ))}
         </motion.div>
       </FadeUp>
+
+      <p className="eyebrow text-text-light/45 text-[10px] tracking-[0.3em] text-center mt-6">
+        Drag · Scroll
+      </p>
     </section>
   );
 }
