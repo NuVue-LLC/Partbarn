@@ -371,7 +371,7 @@ export default function MenuTabs() {
 
   return (
     <>
-      <div className="bg-bg-cream border-b border-text-dark/10 sticky top-20 z-30 shadow-[0_6px_18px_-14px_rgba(0,0,0,0.25)]">
+      <div className="paper-bg border-b border-text-dark/10 sticky top-20 z-30 shadow-[0_6px_18px_-14px_rgba(0,0,0,0.25)]">
         <div className="max-w-5xl mx-auto px-6 md:px-12 flex items-center justify-center gap-10 md:gap-16">
           <TabButton active={tab === "food"} onClick={() => setTab("food")}>
             Food
@@ -382,7 +382,7 @@ export default function MenuTabs() {
         </div>
       </div>
 
-      <div className="bg-bg-cream py-16 md:py-24">
+      <div className="paper-bg py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-6 md:px-12">
           {tab === "food" ? <FoodMenu /> : <DrinksMenu />}
         </div>

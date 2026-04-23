@@ -105,6 +105,12 @@ body {
   display: none;
 }
 
+.paper-bg {
+  background-color: #f5f0e8;
+  background-image: url("/images/textures/paper.png");
+  background-repeat: repeat;
+}
+
 @keyframes scroll-hint {
   0%, 100% { transform: translateY(0); opacity: 0.6; }
   50% { transform: translateY(6px); opacity: 1; }
