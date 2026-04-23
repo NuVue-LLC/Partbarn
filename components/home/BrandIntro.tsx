@@ -61,9 +61,50 @@ export default function BrandIntro() {
         </FadeUp>
 
         <FadeUp delay={0.6}>
+          <ul className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 md:divide-x md:divide-brand-accent/25">
+            <li className="px-6 md:px-8">
+              <p className="font-playfair italic text-brand-accent text-lg mb-3">
+                01
+              </p>
+              <p className="eyebrow text-text-dark text-sm mb-3">
+                Restaurant
+              </p>
+              <p className="font-barlow text-text-dark/80 text-sm leading-[1.6]">
+                A real kitchen behind the bar. Wood-fired flatbreads, sharables,
+                and plates worth sitting down for.
+              </p>
+            </li>
+            <li className="px-6 md:px-8">
+              <p className="font-playfair italic text-brand-accent text-lg mb-3">
+                02
+              </p>
+              <p className="eyebrow text-text-dark text-sm mb-3">
+                Bar
+              </p>
+              <p className="font-barlow text-text-dark/80 text-sm leading-[1.6]">
+                Signature cocktails, rotating taps, and a seat at the end of the
+                bar that&apos;s probably open.
+              </p>
+            </li>
+            <li className="px-6 md:px-8">
+              <p className="font-playfair italic text-brand-accent text-lg mb-3">
+                03
+              </p>
+              <p className="eyebrow text-text-dark text-sm mb-3">
+                Nine Bays
+              </p>
+              <p className="font-barlow text-text-dark/80 text-sm leading-[1.6]">
+                Golfzon simulators in the back. Play a round, run a league, or
+                just hang with food and drinks brought to the bay.
+              </p>
+            </li>
+          </ul>
+        </FadeUp>
+
+        <FadeUp delay={0.75}>
           <span
             aria-hidden="true"
-            className="block mx-auto h-px w-[72px] bg-brand-accent mt-10"
+            className="block mx-auto h-px w-[72px] bg-brand-accent mt-16"
           />
         </FadeUp>
       </div>
