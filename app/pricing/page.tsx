@@ -1,3 +1,4 @@
+import Image from "next/image";
 import FadeUp from "@/components/ui/FadeUp";
 import Button from "@/components/ui/Button";
 import { BUSINESS } from "@/lib/constants";
@@ -41,45 +42,76 @@ function FlagIcon({ className = "" }: { className?: string }) {
 
 function PricingHero() {
   return (
-    <section className="relative bg-bg-cream pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden">
-      <PaperTexture />
+    <section
+      aria-labelledby="pricing-hero-headline"
+      className="relative min-h-[75vh] w-full overflow-hidden flex flex-col"
+    >
+      {/* Background image */}
+      <div className="absolute inset-0 z-0 motion-safe:animate-ken-burns">
+        <Image
+          src="/images/bays/lounge.jpg"
+          alt="Warm lounge interior at The ParT Barn"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+      {/* Dark green overlay */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{ backgroundColor: "rgba(30, 61, 26, 0.55)" }}
+      />
 
-      {/* Scorecard label — top-left */}
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12 mb-12 md:mb-16">
-        <FadeUp>
-          <div>
-            <p className="font-playfair italic font-medium text-text-dark text-2xl md:text-3xl leading-none">
+      {/* Content */}
+      <div className="relative z-20 w-full flex-1 flex flex-col justify-center px-6 md:px-12 py-32 md:py-40 min-h-[75vh]">
+        {/* Scorecard label — upper left */}
+        <div className="max-w-7xl mx-auto w-full mb-12 md:mb-16">
+          <FadeUp>
+            <p className="font-playfair italic font-medium text-text-light text-2xl md:text-3xl leading-none">
               Hole No. 19
             </p>
             <p className="eyebrow text-brand-accent text-xs mt-2 tracking-[0.25em]">
-              The 19th Hole · Where Members Gather
+              THE 19TH HOLE · WHERE MEMBERS GATHER
             </p>
             <span aria-hidden="true" className="block h-px w-56 bg-brand-accent mt-3" />
-          </div>
-        </FadeUp>
-      </div>
+          </FadeUp>
+        </div>
 
-      <div className="relative max-w-4xl mx-auto px-6 md:px-12 text-center">
-        <FadeUp>
-          <p className="eyebrow text-brand-accent text-sm mb-3">
-            Pricing &amp; Memberships
-          </p>
-        </FadeUp>
-        <FadeUp delay={0.08}>
-          <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto mb-6" />
-        </FadeUp>
-        <FadeUp delay={0.14}>
-          <h1 className="font-playfair font-normal text-5xl md:text-7xl text-text-dark leading-[1.05] mb-6">
-            Make ParT Barn your local.
-          </h1>
-        </FadeUp>
-        <FadeUp delay={0.22}>
-          <p className="font-barlow text-text-dark/85 text-base md:text-lg leading-[1.7] max-w-2xl mx-auto">
-            Play more, pay less. Membership gets you priority on the bay, lower rates
-            every time you walk in, and a seat on the list for tournaments, tastings,
-            and the nights you don&apos;t want to miss.
-          </p>
-        </FadeUp>
+        {/* Centered headline block */}
+        <div className="max-w-4xl mx-auto w-full text-center">
+          <FadeUp delay={0.1}>
+            <p className="eyebrow text-brand-accent text-sm tracking-[0.15em] mb-4">
+              PRICING &amp; MEMBERSHIPS
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.18}>
+            <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto mb-6" />
+          </FadeUp>
+          <FadeUp delay={0.25}>
+            <h1
+              id="pricing-hero-headline"
+              className="font-playfair font-normal text-5xl md:text-7xl text-text-light leading-[1.05] mb-6"
+            >
+              Make ParT Barn your local.
+            </h1>
+          </FadeUp>
+          <FadeUp delay={0.33}>
+            <p className="font-barlow text-text-light/80 text-base md:text-lg leading-[1.7] max-w-2xl mx-auto">
+              Play more, pay less. Membership gets you priority on the bay, lower rates
+              every time you walk in, and a seat on the list for tournaments, tastings,
+              and the nights you don&apos;t want to miss.
+            </p>
+          </FadeUp>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="max-w-4xl mx-auto w-full text-center mt-12 hidden md:flex flex-col items-center gap-2 text-text-light/70 motion-safe:animate-scroll-hint">
+          <span className="eyebrow text-[10px]">Scroll</span>
+          <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
+            <path d="M8 2 V18 M2 12 L8 18 L14 12" stroke="#c9a84c" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        </div>
       </div>
     </section>
   );
@@ -251,20 +283,20 @@ const rates = [
 
 function RatesSection() {
   return (
-    <section className="relative bg-bg-off py-24 md:py-28 overflow-hidden">
+    <section className="relative py-24 md:py-28 overflow-hidden" style={{ backgroundColor: "#1e3d1a" }}>
       <PaperTexture />
       <div className="relative max-w-5xl mx-auto px-6 md:px-12">
         <FadeUp>
           <div className="text-center mb-14">
             <p className="eyebrow text-brand-accent text-sm mb-3">Simulator Rates</p>
             <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto mb-6" />
-            <h2 className="font-playfair font-normal text-3xl md:text-5xl text-text-dark leading-[1.1]">
+            <h2 className="font-playfair font-normal text-3xl md:text-5xl text-text-light leading-[1.1]">
               Pay by the hour.
             </h2>
           </div>
         </FadeUp>
 
-        <ul className="divide-y divide-text-dark/15 border-y border-text-dark/15">
+        <ul className="divide-y divide-text-light/20 border-y border-text-light/20">
           {rates.map((r, i) => (
             <FadeUp key={r.label} delay={i * 0.08} as="li">
               <div className="py-7 md:py-9 grid grid-cols-12 gap-4 items-baseline">
@@ -274,15 +306,15 @@ function RatesSection() {
                   </p>
                 </div>
                 <div className="col-span-12 md:col-span-4 flex items-baseline gap-1">
-                  <span className="font-playfair font-normal text-5xl md:text-6xl text-text-dark leading-none">
+                  <span className="font-playfair font-normal text-5xl md:text-6xl text-text-light leading-none">
                     {r.price}
                   </span>
-                  <span className="font-barlow text-text-dark/60 text-base md:text-lg">
+                  <span className="font-barlow text-text-light/60 text-base md:text-lg">
                     {r.unit}
                   </span>
                 </div>
                 <div className="col-span-12 md:col-span-4 md:text-right">
-                  <p className="font-barlow text-text-dark/70 text-sm md:text-base">
+                  <p className="font-barlow text-text-light/70 text-sm md:text-base">
                     {r.note}
                   </p>
                 </div>
@@ -292,7 +324,7 @@ function RatesSection() {
         </ul>
 
         <FadeUp delay={0.35}>
-          <p className="font-barlow text-text-dark/65 text-sm mt-10 max-w-2xl mx-auto text-center leading-[1.7]">
+          <p className="font-barlow text-text-light/65 text-sm mt-10 max-w-2xl mx-auto text-center leading-[1.7]">
             Rates are per bay, not per person — up to six players per bay.
             Peak applies Oct–Apr on evenings, weekends, and holidays.
             Member rates available on every booking.
