@@ -33,24 +33,24 @@ export default function Testimonials() {
   return (
     <section
       aria-labelledby="testimonials"
-      className="bg-brand-green-dark text-text-light py-24 md:py-32"
+      className="bg-brand-green-dark text-text-light py-16 md:py-24"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="max-w-3xl mx-auto text-center mb-14 md:mb-20">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <div className="max-w-2xl mx-auto text-center mb-10 md:mb-14">
           <FadeUp>
-            <p className="eyebrow text-brand-accent text-sm mb-5">What Groups Say</p>
+            <p className="eyebrow text-brand-accent text-xs mb-4">What Groups Say</p>
           </FadeUp>
           <FadeUp delay={0.08}>
             <h2
               id="testimonials"
-              className="font-playfair font-normal text-4xl md:text-6xl text-text-light leading-[1.05]"
+              className="font-playfair font-normal text-3xl md:text-5xl text-text-light leading-[1.05]"
             >
               Notes from the floor.
             </h2>
           </FadeUp>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
           <FadeUp className="lg:col-span-3">
             <TestimonialCard t={testimonials[0]} />
           </FadeUp>
@@ -69,32 +69,32 @@ export default function Testimonials() {
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
     <figure
-      className={`h-full bg-brand-green text-text-light border-t-[3px] border-brand-accent shadow-lg p-8 md:p-10 flex flex-col ${
-        t.featured ? "lg:p-14" : ""
+      className={`h-full bg-brand-green text-text-light border-t-[3px] border-brand-accent shadow-lg p-6 md:p-8 flex flex-col ${
+        t.featured ? "lg:p-10" : ""
       }`}
     >
       <span
         aria-hidden="true"
-        className={`font-playfair text-brand-accent/60 leading-none mb-4 ${
-          t.featured ? "text-7xl md:text-8xl" : "text-6xl"
+        className={`font-playfair text-brand-accent/60 leading-none mb-3 ${
+          t.featured ? "text-5xl md:text-6xl" : "text-4xl"
         }`}
       >
         &ldquo;
       </span>
       <blockquote
-        className={`font-playfair font-normal text-text-light leading-[1.35] flex-1 ${
+        className={`font-playfair font-normal text-text-light leading-[1.4] flex-1 ${
           t.featured
-            ? "text-2xl md:text-3xl lg:text-[32px]"
-            : "text-xl md:text-2xl"
+            ? "text-lg md:text-xl lg:text-2xl"
+            : "text-base md:text-lg"
         }`}
       >
         {t.quote}
       </blockquote>
-      <figcaption className="mt-8 pt-6 border-t border-text-light/15">
-        <p className="font-caveat text-brand-accent text-2xl md:text-3xl leading-none mb-2">
+      <figcaption className="mt-6 pt-4 border-t border-text-light/15">
+        <p className="font-caveat text-brand-accent text-xl md:text-2xl leading-none mb-1.5">
           {t.name}
         </p>
-        <p className="eyebrow text-text-light/70 text-[11px]">{t.event}</p>
+        <p className="eyebrow text-text-light/70 text-[10px]">{t.event}</p>
       </figcaption>
     </figure>
   );

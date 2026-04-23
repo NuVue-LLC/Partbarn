@@ -47,50 +47,75 @@ const ctas = [
   { label: "Book a Visit", href: "/reserve-a-table" },
 ];
 
+function PaperTexture() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 opacity-[0.10] mix-blend-multiply"
+      style={{
+        backgroundImage:
+          "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.18  0 0 0 0 0.10  0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>\")",
+        backgroundSize: "320px 320px",
+      }}
+    />
+  );
+}
+
 export default function FaqAndCTAs() {
   return (
-    <section aria-labelledby="faq-heading" className="bg-bg-cream py-24 md:py-32">
-      <div className="max-w-4xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-14 md:mb-20">
-          <FadeUp>
-            <p className="eyebrow text-brand-accent text-sm mb-5">Before You Ask</p>
-          </FadeUp>
-          <FadeUp delay={0.08}>
-            <h2
-              id="faq-heading"
-              className="font-playfair font-normal text-4xl md:text-6xl text-text-dark leading-[1.05] mb-6"
-            >
-              Questions, answered.
-            </h2>
-          </FadeUp>
-        </div>
+    <>
+      <section
+        aria-labelledby="faq-heading"
+        className="relative bg-bg-off py-24 md:py-28 overflow-hidden"
+      >
+        <PaperTexture />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
+        />
 
-        <FadeUp delay={0.16}>
-          <div className="bg-bg-off border-t-2 border-brand-accent divide-y divide-text-dark/10">
-            {faqs.map((f) => (
-              <details key={f.q} className="group">
-                <summary className="list-none cursor-pointer px-6 md:px-8 py-5 md:py-6 flex items-start justify-between gap-6 focus-visible:outline-none focus-visible:bg-text-dark/5 transition-colors hover:bg-text-dark/[0.03]">
-                  <span className="font-playfair font-normal text-lg md:text-xl text-text-dark leading-snug">
+        <div className="relative max-w-6xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <FadeUp>
+              <p className="eyebrow text-brand-accent text-sm mb-5">Before You Ask</p>
+            </FadeUp>
+            <FadeUp delay={0.08}>
+              <div className="flex items-center justify-center gap-5">
+                <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+                <h2
+                  id="faq-heading"
+                  className="font-playfair italic font-normal text-3xl md:text-5xl text-text-dark leading-none"
+                >
+                  Questions, answered.
+                </h2>
+                <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+              </div>
+            </FadeUp>
+          </div>
+
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-16 border-t border-text-dark/15">
+            {faqs.map((f, i) => (
+              <FadeUp key={f.q} delay={i * 0.05} as="li">
+                <div className="py-8 border-b border-text-dark/15 h-full">
+                  <p className="font-playfair italic text-text-dark text-xl md:text-2xl leading-snug mb-3">
                     {f.q}
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 mt-1 font-barlow-condensed text-brand-accent text-2xl leading-none transition-transform duration-300 group-open:rotate-45"
-                  >
-                    +
-                  </span>
-                </summary>
-                <div className="px-6 md:px-8 pb-6 md:pb-7 -mt-1">
-                  <p className="font-barlow text-text-dark/80 text-base leading-[1.7] max-w-2xl">
+                  </p>
+                  <p className="font-barlow text-text-dark/80 text-sm md:text-base leading-[1.7]">
                     {f.a}
                   </p>
                 </div>
-              </details>
+              </FadeUp>
             ))}
-          </div>
-        </FadeUp>
+          </ul>
+        </div>
+      </section>
 
-        <div className="mt-24 md:mt-32 text-center">
+      <section aria-label="Other ways to reach us" className="bg-bg-cream py-24 md:py-32">
+        <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
           <FadeUp>
             <p className="eyebrow text-brand-accent text-sm mb-5">Other Ways In</p>
           </FadeUp>
@@ -129,7 +154,7 @@ export default function FaqAndCTAs() {
             </ul>
           </FadeUp>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

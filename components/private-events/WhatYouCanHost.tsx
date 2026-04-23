@@ -20,7 +20,7 @@ const cards: EventCard[] = [
     image: "/images/events/corporate.jpg",
     alt: "A long table set for a corporate dinner at The ParT Barn",
     span: "md:col-span-2",
-    aspect: "aspect-[16/9]",
+    aspect: "aspect-[2/1]",
   },
   {
     eyebrow: "Buyouts",
@@ -29,7 +29,7 @@ const cards: EventCard[] = [
     image: "/images/bar/main-bar.jpg",
     alt: "The main bar at The ParT Barn lit in green and gold",
     span: "md:col-span-1",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[4/3]",
   },
   {
     eyebrow: "Birthdays",
@@ -38,7 +38,7 @@ const cards: EventCard[] = [
     image: "/images/events/birthdays.jpg",
     alt: "A birthday gathering around a table at The ParT Barn",
     span: "md:col-span-1",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[4/3]",
   },
   {
     eyebrow: "Bach Parties",
@@ -47,7 +47,7 @@ const cards: EventCard[] = [
     image: "/images/gallery/cocktail.jpg",
     alt: "A signature cocktail at The ParT Barn",
     span: "md:col-span-1",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[4/3]",
   },
   {
     eyebrow: "Weddings",
@@ -56,7 +56,7 @@ const cards: EventCard[] = [
     image: "/images/gallery/dining-wall.jpg",
     alt: "The dining room at The ParT Barn with warm wood and wainscoting",
     span: "md:col-span-1",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[4/3]",
   },
   {
     eyebrow: "Family",
@@ -65,7 +65,7 @@ const cards: EventCard[] = [
     image: "/images/events/leagues.jpg",
     alt: "Simulator bays set up for a private group gathering at The ParT Barn",
     span: "md:col-span-3",
-    aspect: "aspect-[21/9]",
+    aspect: "aspect-[3/1]",
   },
 ];
 

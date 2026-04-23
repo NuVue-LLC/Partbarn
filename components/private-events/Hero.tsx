@@ -30,7 +30,7 @@ export default function Hero() {
           id="private-events-hero-headline"
           className="font-playfair font-light text-5xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight"
         >
-          Host 8 or host 220.
+          A room built for the whole group.
         </h1>
         <p className="font-barlow text-lg md:text-xl text-text-light/85 mt-6 max-w-2xl">
           Full bar, full kitchen, six simulator bays, and a team that builds the night around
