@@ -250,6 +250,14 @@ function BaysHero() {
               real kitchen twenty feet away.
             </p>
           </FadeUp>
+          <FadeUp delay={0.42}>
+            <p
+              className="font-caveat text-brand-accent text-3xl md:text-4xl leading-none mt-8"
+              style={{ transform: "rotate(-1.5deg)" }}
+            >
+              tee time is whenever you want.
+            </p>
+          </FadeUp>
         </div>
 
         {/* Scroll indicator */}
@@ -275,10 +283,6 @@ interface TechBlock {
   eyebrow: string;
   title: string;
   body: string;
-  image: string;
-  alt: string;
-  rotate: string;
-  aspect: string;
   caveat: string;
 }
 
@@ -287,30 +291,18 @@ const techBlocks: TechBlock[] = [
     eyebrow: "Dual-Vertical Tracking",
     title: "Two cameras. Every ball. Every angle.",
     body: "Most sims track the ball with a single side-fired sensor. TwoVisionX uses two vertical high-speed cameras mounted above the tee — the same rig tour coaches use for swing analysis. Ball speed, spin rate, launch angle, and clubface impact point, read within one percent of a real flight.",
-    image: "/images/bays/lounge.jpg",
-    alt: "A Golfzon TwoVisionX simulator bay showing the overhead camera rig and the course on screen",
-    rotate: "-2deg",
-    aspect: "aspect-[4/3]",
     caveat: "the ball goes where it should.",
   },
   {
     eyebrow: "The Moving Swing Plate",
     title: "The floor tilts with your lie.",
     body: "Uphill into the green on Augusta's 10th? The plate under your feet lifts. Downhill into the ravine at Pebble? It drops. Sidehill off the fairway on 18? It slopes. Every shot plays off the exact grade the course gives you — not standing flat on a rubber mat.",
-    image: "/images/events/leagues.jpg",
-    alt: "Players at a simulator bay with the screen showing a championship course fairway",
-    rotate: "2.5deg",
-    aspect: "aspect-[4/5]",
     caveat: "practice like the tour.",
   },
   {
     eyebrow: "Every Shot, Measured",
     title: "Twelve data points per swing.",
     body: "Ball speed, clubhead speed, smash factor, launch angle, spin axis, backspin, sidespin, clubface angle, swing path, attack angle, carry distance, total distance. Every shot logs to your card. Print it on the way out. Beat it next time.",
-    image: "/images/gallery/retail.jpg",
-    alt: "Retail display at The ParT Barn with clubs and gear on shelves",
-    rotate: "-3deg",
-    aspect: "aspect-[4/3]",
     caveat: "the stats don't lie.",
   },
 ];
@@ -321,7 +313,7 @@ function ExperienceSection() {
       <PaperTexture />
 
       {/* Ghosted course motif in background */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.06] text-brand-green-dark">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.10] text-brand-green-dark">
         <Hole2Motif />
       </div>
 
@@ -337,7 +329,7 @@ function ExperienceSection() {
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
-        <div className="text-center mb-20 md:mb-24">
+        <div className="text-center mb-16 md:mb-20">
           <FadeUp>
             <p className="eyebrow text-brand-accent text-sm mb-5">How It Works</p>
           </FadeUp>
@@ -352,75 +344,49 @@ function ExperienceSection() {
           </FadeUp>
         </div>
 
-        {/* Three blocks */}
-        <div className="flex flex-col gap-24 md:gap-28">
-          {techBlocks.map((b, i) => {
-            const imageOrder = i % 2 === 0 ? "lg:order-1" : "lg:order-2";
-            const copyOrder = i % 2 === 0 ? "lg:order-2" : "lg:order-1";
-            return (
-              <div
-                key={b.eyebrow}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center"
-              >
-                {/* Photo */}
-                <FadeUp
-                  delay={0.05}
-                  className={`lg:col-span-6 flex justify-center ${imageOrder}`}
-                >
-                  <div
-                    className="relative w-full max-w-[460px]"
-                    style={{ transform: `rotate(${b.rotate})` }}
-                  >
-                    <div
-                      className={`relative w-full ${b.aspect} overflow-hidden`}
-                      style={{
-                        boxShadow:
-                          "14px 20px 50px -18px rgba(26,46,24,0.55), 3px 6px 14px -4px rgba(26,46,24,0.25)",
-                      }}
-                    >
-                      <Image
-                        src={b.image}
-                        alt={b.alt}
-                        fill
-                        sizes="(min-width: 1024px) 40vw, 90vw"
-                        className="object-cover"
-                      />
-                    </div>
-                    {/* Handwritten caveat caption */}
-                    <p
-                      aria-hidden="true"
-                      className="font-caveat text-brand-accent text-2xl md:text-3xl mt-4 text-center leading-none"
-                    >
-                      {b.caveat}
-                    </p>
-                  </div>
-                </FadeUp>
-
-                {/* Copy */}
-                <FadeUp
-                  delay={0.15}
-                  className={`lg:col-span-6 ${copyOrder} ${
-                    i % 2 === 0 ? "lg:pl-4" : "lg:pr-4"
-                  }`}
-                >
-                  <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] mb-4">
-                    {b.eyebrow}
+        {/* 3-column text spread */}
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-y-14 md:gap-y-0 md:gap-x-10 lg:gap-x-16 relative">
+          {techBlocks.map((b, i) => (
+            <FadeUp key={b.eyebrow} delay={0.05 + i * 0.1} as="li">
+              <div className="relative md:px-2 lg:px-4">
+                <div className="flex items-baseline gap-4 mb-4">
+                  <p className="font-playfair italic font-normal text-brand-green-dark text-6xl md:text-7xl leading-none">
+                    0{i + 1}
                   </p>
-                  <h3 className="font-playfair italic font-normal text-text-dark text-3xl md:text-4xl leading-[1.15] mb-5">
-                    {b.title}
-                  </h3>
                   <span
                     aria-hidden="true"
-                    className="block h-px w-12 bg-brand-accent mb-5"
+                    className="flex-1 h-px bg-brand-green-dark/35 mb-2"
                   />
-                  <p className="font-barlow text-text-dark/80 text-base md:text-lg leading-[1.7] max-w-md">
-                    {b.body}
-                  </p>
-                </FadeUp>
+                </div>
+                <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] mb-4">
+                  {b.eyebrow}
+                </p>
+                <h3 className="font-playfair italic font-normal text-text-dark text-2xl md:text-3xl leading-[1.15] mb-5">
+                  {b.title}
+                </h3>
+                <span
+                  aria-hidden="true"
+                  className="block h-px w-12 bg-brand-accent mb-5"
+                />
+                <p className="font-barlow text-text-dark/80 text-base leading-[1.75]">
+                  {b.body}
+                </p>
+                <p
+                  className="font-caveat text-brand-accent text-2xl md:text-3xl mt-6 leading-none"
+                  style={{ transform: "rotate(-1.5deg)" }}
+                >
+                  {b.caveat}
+                </p>
+                {i < techBlocks.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="hidden md:block absolute right-0 top-2 w-px h-40 bg-brand-accent/25 -mr-5 lg:-mr-8"
+                  />
+                )}
               </div>
-            );
-          })}
-        </div>
+            </FadeUp>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -457,17 +423,97 @@ const specs: Spec[] = [
   },
 ];
 
+// ========== VIDEO SHOWCASE ==========
+
+function VideoShowcase() {
+  return (
+    <section className="relative bg-bg-cream pt-4 pb-14 md:pt-6 md:pb-20 overflow-hidden">
+      <PaperTexture />
+
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
+        <div className="text-center mb-8 md:mb-10">
+          <FadeUp>
+            <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] mb-4">
+              See It In Motion
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <div className="flex items-center justify-center gap-5">
+              <span aria-hidden="true" className="block h-px w-10 md:w-14 bg-brand-accent" />
+              <h2 className="font-playfair italic font-normal text-text-dark text-2xl md:text-3xl leading-none">
+                A swing in the bay.
+              </h2>
+              <span aria-hidden="true" className="block h-px w-10 md:w-14 bg-brand-accent" />
+            </div>
+          </FadeUp>
+        </div>
+
+        <FadeUp delay={0.15}>
+          <div
+            className="relative w-full aspect-video overflow-hidden"
+            style={{
+              boxShadow:
+                "18px 24px 60px -18px rgba(26,46,24,0.55), 4px 8px 16px -6px rgba(26,46,24,0.25)",
+            }}
+          >
+            <Image
+              src="/images/bays/lounge.jpg"
+              alt="A Golfzon simulator bay at The ParT Barn — placeholder for showcase video"
+              fill
+              sizes="(min-width: 1024px) 80vw, 100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-brand-green-dark/45" />
+
+            {/* Play button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full border-2 border-brand-accent bg-black/20 backdrop-blur-[2px] flex items-center justify-center transition-transform hover:scale-105">
+                <svg
+                  width="28"
+                  height="34"
+                  viewBox="0 0 28 34"
+                  className="text-brand-accent ml-1.5 md:ml-2 md:w-9 md:h-11"
+                  aria-hidden="true"
+                >
+                  <polygon points="2,2 26,17 2,32" fill="currentColor" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Placeholder tag */}
+            <p
+              aria-hidden="true"
+              className="absolute top-4 left-4 md:top-6 md:left-6 eyebrow text-brand-accent text-[10px] tracking-[0.25em] bg-black/40 px-3 py-1.5"
+            >
+              Video Placeholder
+            </p>
+          </div>
+        </FadeUp>
+
+        <FadeUp delay={0.28}>
+          <p
+            className="font-caveat text-brand-accent text-2xl md:text-3xl text-center mt-6 leading-none"
+            style={{ transform: "rotate(-1.5deg)" }}
+          >
+            video goes here — one perfect swing.
+          </p>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
 function TechSection() {
   return (
     <section
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: "#1e3d1a" }}
     >
       <DarkTexture />
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-12 md:mb-16">
           <FadeUp>
             <p className="eyebrow text-brand-accent text-sm mb-5">Golfzon TwoVisionX</p>
           </FadeUp>
@@ -482,7 +528,7 @@ function TechSection() {
         </div>
 
         {/* 4-col spec grid */}
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-14 md:gap-y-0 relative mb-20 md:mb-24">
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-14 md:gap-y-0 relative mb-14 md:mb-16">
           {specs.map((s, i) => (
             <FadeUp key={s.label} delay={i * 0.1} as="li">
               <div className="text-center md:px-6 relative">
@@ -506,29 +552,53 @@ function TechSection() {
           ))}
         </ul>
 
-        {/* Floating mid-swing photograph */}
-        <FadeUp delay={0.4} className="flex justify-center md:justify-end">
-          <div
-            className="relative w-full max-w-[720px]"
-            style={{ transform: "rotate(1.5deg)" }}
-          >
+        {/* Two centered editorial photos */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 max-w-5xl mx-auto items-center">
+          <FadeUp delay={0.35} className="flex justify-center">
             <div
-              className="relative w-full aspect-[16/9] overflow-hidden"
-              style={{
-                boxShadow:
-                  "18px 24px 60px -18px rgba(0,0,0,0.65), 4px 8px 16px -6px rgba(0,0,0,0.4)",
-              }}
+              className="relative w-full max-w-[440px]"
+              style={{ transform: "rotate(-1.5deg)" }}
             >
-              <Image
-                src="/images/bays/lounge.jpg"
-                alt="A player mid-swing at a Golfzon TwoVisionX simulator bay with the course rendering on screen"
-                fill
-                sizes="(min-width: 1024px) 60vw, 90vw"
-                className="object-cover"
-              />
+              <div
+                className="relative w-full aspect-[4/3] overflow-hidden"
+                style={{
+                  boxShadow:
+                    "16px 22px 56px -18px rgba(0,0,0,0.65), 4px 8px 16px -6px rgba(0,0,0,0.4)",
+                }}
+              >
+                <Image
+                  src="/images/bays/lounge.jpg"
+                  alt="A Golfzon TwoVisionX simulator bay with the course glowing on screen and leather lounge seating"
+                  fill
+                  sizes="(min-width: 768px) 40vw, 90vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
-          </div>
-        </FadeUp>
+          </FadeUp>
+          <FadeUp delay={0.48} className="flex justify-center md:mt-10">
+            <div
+              className="relative w-full max-w-[440px]"
+              style={{ transform: "rotate(2deg)" }}
+            >
+              <div
+                className="relative w-full aspect-[4/3] overflow-hidden"
+                style={{
+                  boxShadow:
+                    "16px 22px 56px -18px rgba(0,0,0,0.65), 4px 8px 16px -6px rgba(0,0,0,0.4)",
+                }}
+              >
+                <Image
+                  src="/images/events/leagues.jpg"
+                  alt="Players at a simulator bay mid-swing with the course rendering on the big screen"
+                  fill
+                  sizes="(min-width: 768px) 40vw, 90vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </FadeUp>
+        </div>
       </div>
     </section>
   );
@@ -538,7 +608,7 @@ function TechSection() {
 
 function PhotoBreak() {
   return (
-    <div className="relative w-full min-h-[50vh] md:min-h-[55vh] overflow-hidden">
+    <div className="relative w-full min-h-[42vh] md:min-h-[48vh] overflow-hidden">
       <Image
         src="/images/bar/main-bar.jpg"
         alt="The main bar at The ParT Barn — warm wood, green stools, TVs above"
@@ -548,16 +618,40 @@ function PhotoBreak() {
       />
       <div
         className="absolute inset-0"
-        style={{ backgroundColor: "rgba(30, 61, 26, 0.38)" }}
+        style={{ backgroundColor: "rgba(30, 61, 26, 0.58)" }}
       />
 
       <div className="absolute inset-0 flex items-center justify-center px-6">
-        <p
-          className="font-caveat text-text-light text-4xl md:text-6xl text-center leading-[1.1] drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
-          style={{ transform: "rotate(-2deg)" }}
-        >
-          the kitchen is twenty feet away.
-        </p>
+        <div className="relative text-center max-w-3xl">
+          <FadeUp>
+            <p className="eyebrow text-brand-accent text-xs md:text-sm tracking-[0.25em] mb-5">
+              Across The Hall
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <div className="flex items-center justify-center gap-4 md:gap-5 mb-6">
+              <span aria-hidden="true" className="block h-px w-10 md:w-14 bg-brand-accent" />
+              <h2 className="font-playfair italic font-normal text-text-light text-3xl md:text-4xl lg:text-5xl leading-[1.1]">
+                The kitchen is open.
+              </h2>
+              <span aria-hidden="true" className="block h-px w-10 md:w-14 bg-brand-accent" />
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.18}>
+            <p
+              className="font-caveat text-brand-accent text-2xl md:text-4xl leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]"
+              style={{ transform: "rotate(-2deg)" }}
+            >
+              twenty feet away. maybe less.
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.26}>
+            <p className="font-barlow text-text-light/80 text-sm md:text-base leading-[1.7] max-w-lg mx-auto mt-8">
+              Real chefs. Real bar. Cocktails delivered bayside while you play the
+              back nine at Pebble.
+            </p>
+          </FadeUp>
+        </div>
       </div>
 
       <div
@@ -587,68 +681,58 @@ const included = [
 
 function IncludedSection() {
   return (
-    <section className="relative bg-bg-cream py-24 md:py-32 overflow-hidden">
+    <section className="relative bg-bg-cream py-20 md:py-28 overflow-hidden">
       <PaperTexture />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-          {/* Left — copy + list */}
-          <div className="lg:col-span-6 order-2 lg:order-1">
-            <FadeUp>
-              <p className="eyebrow text-brand-accent text-sm mb-5">What's In a Bay</p>
-            </FadeUp>
-            <FadeUp delay={0.08}>
-              <h2 className="font-playfair italic font-normal text-text-dark text-3xl md:text-5xl leading-[1.15] mb-6">
+      {/* Ghosted course motif for continuity with Hole 2 theme */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.07] text-brand-green-dark">
+        <Hole2Motif />
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
+        {/* Header */}
+        <div className="text-center mb-14 md:mb-20">
+          <FadeUp>
+            <p className="eyebrow text-brand-accent text-sm mb-4">What&apos;s In a Bay</p>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <div className="flex items-center justify-center gap-5">
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
+              <h2 className="font-playfair italic font-normal text-text-dark text-3xl md:text-5xl leading-[1.1]">
                 Everything you need.
-                <span className="block not-italic">Nothing you don&apos;t.</span>
               </h2>
-            </FadeUp>
-            <FadeUp delay={0.16}>
-              <span
-                aria-hidden="true"
-                className="block h-px w-16 bg-brand-accent mb-8"
-              />
-            </FadeUp>
-
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-              {included.map((item, i) => (
-                <FadeUp key={item} delay={0.22 + i * 0.04} as="li">
-                  <div className="flex items-start gap-3 font-barlow text-text-dark text-base leading-[1.5]">
-                    <FlagIcon />
-                    <span>{item}</span>
-                  </div>
-                </FadeUp>
-              ))}
-            </ul>
-          </div>
-
-          {/* Right — editorial photo */}
-          <FadeUp
-            delay={0.14}
-            className="lg:col-span-6 order-1 lg:order-2 flex justify-center"
-          >
-            <div
-              className="relative w-full max-w-[520px]"
-              style={{ transform: "rotate(-1.5deg)" }}
-            >
-              <div
-                className="relative w-full aspect-[4/5] overflow-hidden"
-                style={{
-                  boxShadow:
-                    "16px 22px 56px -18px rgba(26,46,24,0.55), 3px 6px 14px -4px rgba(26,46,24,0.25)",
-                }}
-              >
-                <Image
-                  src="/images/gallery/cocktail.jpg"
-                  alt="Drinks and clubs resting on the side table of a bay at The ParT Barn"
-                  fill
-                  sizes="(min-width: 1024px) 40vw, 90vw"
-                  className="object-cover"
-                />
-              </div>
+              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
             </div>
           </FadeUp>
+          <FadeUp delay={0.16}>
+            <p
+              className="font-caveat text-brand-accent text-2xl md:text-3xl leading-none mt-5"
+              style={{ transform: "rotate(-1.5deg)" }}
+            >
+              nothing you don&apos;t.
+            </p>
+          </FadeUp>
         </div>
+
+        {/* Scorecard grid — 8 numbered features */}
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-6 md:gap-x-10 gap-y-10 md:gap-y-14">
+          {included.map((item, i) => (
+            <FadeUp key={item} delay={0.05 + i * 0.04} as="li">
+              <div className="relative">
+                <p className="font-playfair italic font-normal text-brand-green-dark text-4xl md:text-5xl leading-none mb-3">
+                  0{i + 1}
+                </p>
+                <span
+                  aria-hidden="true"
+                  className="block h-px w-10 bg-brand-accent mb-3"
+                />
+                <p className="font-barlow text-text-dark text-sm md:text-base leading-[1.45]">
+                  {item}
+                </p>
+              </div>
+            </FadeUp>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -674,65 +758,77 @@ const rates = [
 
 function RatesSection() {
   return (
-    <section className="relative bg-bg-cream py-16 md:py-20 overflow-hidden">
-      <PaperTexture />
+    <section
+      className="relative py-10 md:py-12 overflow-hidden border-y border-brand-accent/25"
+      style={{ backgroundColor: "#14301a" }}
+    >
+      <DarkTexture />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
+        className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/60 to-transparent"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/60 to-transparent"
       />
 
-      <div className="relative max-w-5xl mx-auto px-6 md:px-12">
-        <FadeUp>
-          <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-6 md:gap-10 mb-8">
-            <div>
-              <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] mb-2">
-                Simulator Rates
-              </p>
-              <h2 className="font-playfair italic font-normal text-text-dark text-2xl md:text-3xl leading-none">
-                Starting at $50 an hour.
-              </h2>
-            </div>
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
+        <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-8 lg:gap-10">
+          {/* Left label */}
+          <FadeUp className="text-center lg:text-left shrink-0">
+            <p className="eyebrow text-brand-accent text-[10px] md:text-xs tracking-[0.25em] mb-2">
+              Simulator Rates
+            </p>
+            <p className="font-playfair italic font-normal text-text-light text-xl md:text-2xl leading-none">
+              Starting at $50/hr.
+            </p>
+            <p
+              className="font-caveat text-brand-accent text-lg md:text-xl leading-none mt-2"
+              style={{ transform: "rotate(-1.5deg)" }}
+            >
+              per bay — not per person.
+            </p>
+          </FadeUp>
+
+          {/* Center rates ribbon */}
+          <FadeUp delay={0.1} className="flex-1 w-full lg:w-auto">
+            <ul className="grid grid-cols-3 relative">
+              {rates.map((r, i) => (
+                <li key={r.label} className="relative text-center px-2 md:px-4">
+                  <p className="eyebrow text-brand-accent text-[10px] tracking-[0.25em] mb-2">
+                    {r.label}
+                  </p>
+                  <p className="font-playfair font-normal text-text-light text-3xl md:text-4xl leading-none mb-1.5">
+                    {r.price}
+                    <span className="font-barlow text-text-light/55 text-sm md:text-base ml-1 align-baseline">
+                      {r.unit}
+                    </span>
+                  </p>
+                  <p className="font-barlow text-text-light/65 text-[10px] md:text-[11px] leading-[1.4] max-w-[160px] mx-auto">
+                    {r.note}
+                  </p>
+                  {i < rates.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-16 md:h-20 bg-brand-accent/30"
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+          </FadeUp>
+
+          {/* Right link */}
+          <FadeUp delay={0.2} className="shrink-0">
             <a
               href="/pricing"
-              className="eyebrow text-brand-accent hover:text-text-dark transition-colors text-xs tracking-[0.25em] whitespace-nowrap"
+              className="eyebrow text-brand-accent hover:text-text-light transition-colors text-[10px] md:text-xs tracking-[0.25em] whitespace-nowrap border-b border-brand-accent/40 pb-1"
             >
               See Full Rates &amp; Memberships →
             </a>
-          </div>
-        </FadeUp>
-
-        <FadeUp delay={0.1}>
-          <ul className="grid grid-cols-3 border-y border-text-dark/15 divide-x divide-text-dark/15">
-            {rates.map((r) => (
-              <li key={r.label} className="py-5 md:py-6 px-3 md:px-6 text-center">
-                <p className="eyebrow text-brand-accent text-[10px] md:text-xs tracking-[0.25em] mb-2">
-                  {r.label}
-                </p>
-                <p className="font-playfair font-normal text-3xl md:text-4xl text-text-dark leading-none mb-2">
-                  {r.price}
-                  <span className="font-barlow text-text-dark/55 text-sm md:text-base ml-1">
-                    {r.unit}
-                  </span>
-                </p>
-                <p className="font-barlow text-text-dark/65 text-[11px] md:text-xs leading-snug">
-                  {r.note}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </FadeUp>
-
-        <FadeUp delay={0.2}>
-          <p className="font-barlow text-text-dark/60 text-xs md:text-sm max-w-2xl mx-auto text-center leading-[1.7] mt-6">
-            Per bay, not per person — up to six players. Peak applies Oct–Apr
-            evenings, weekends, and holidays.
-          </p>
-        </FadeUp>
+          </FadeUp>
+        </div>
       </div>
     </section>
   );
@@ -744,7 +840,7 @@ function FinalCtaSection() {
   return (
     <section
       aria-labelledby="bays-cta-heading"
-      className="relative min-h-[70vh] flex flex-col justify-center py-32 md:py-40 overflow-hidden"
+      className="relative flex flex-col justify-center py-20 md:py-28 overflow-hidden"
       style={{ backgroundColor: "#1e3d1a" }}
     >
       <div className="absolute inset-0 z-0 motion-safe:animate-ken-burns">
@@ -773,7 +869,7 @@ function FinalCtaSection() {
         <FadeUp delay={0.16}>
           <h2
             id="bays-cta-heading"
-            className="font-playfair font-normal text-5xl md:text-7xl lg:text-8xl text-text-light leading-[1.02] mb-6"
+            className="font-playfair font-normal text-4xl md:text-6xl lg:text-7xl text-text-light leading-[1.02] mb-5"
           >
             Pick a night.
             <span className="block font-playfair italic">Pick a bay.</span>
@@ -781,7 +877,7 @@ function FinalCtaSection() {
         </FadeUp>
         <FadeUp delay={0.28}>
           <p
-            className="font-caveat text-brand-accent text-3xl md:text-5xl leading-none mb-10"
+            className="font-caveat text-brand-accent text-2xl md:text-4xl leading-none mb-8"
             style={{ transform: "rotate(-1.5deg)" }}
           >
             the tee time is whenever.
@@ -825,6 +921,7 @@ export default function GolfBaysPage() {
     <>
       <BaysHero />
       <ExperienceSection />
+      <VideoShowcase />
       <TechSection />
       <PhotoBreak />
       <IncludedSection />
