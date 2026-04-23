@@ -279,7 +279,7 @@ interface ExperienceBlock {
   alt: string;
   rotate: string;
   aspect: string;
-  align: "left" | "center" | "right";
+  caveat: string;
 }
 
 const experienceBlocks: ExperienceBlock[] = [
@@ -291,7 +291,7 @@ const experienceBlocks: ExperienceBlock[] = [
     alt: "Friends playing a simulator bay at The ParT Barn on a league night",
     rotate: "-2deg",
     aspect: "aspect-[4/3]",
-    align: "left",
+    caveat: "whatever you're wearing, it's fine.",
   },
   {
     eyebrow: "Real Food, Real Drinks",
@@ -301,7 +301,7 @@ const experienceBlocks: ExperienceBlock[] = [
     alt: "Sliders and a flatbread set on the rail in front of a simulator bay at The ParT Barn",
     rotate: "2.5deg",
     aspect: "aspect-[4/5]",
-    align: "right",
+    caveat: "order the flatbread.",
   },
   {
     eyebrow: "Play Serious or Play Silly",
@@ -311,7 +311,7 @@ const experienceBlocks: ExperienceBlock[] = [
     alt: "A signature martini garnished with a mini golf ball at The ParT Barn bar",
     rotate: "-3deg",
     aspect: "aspect-[4/3]",
-    align: "left",
+    caveat: "both work.",
   },
 ];
 
@@ -386,6 +386,13 @@ function ExperienceSection() {
                         className="object-cover"
                       />
                     </div>
+                    {/* Handwritten caveat caption */}
+                    <p
+                      aria-hidden="true"
+                      className="font-caveat text-brand-accent text-2xl md:text-3xl mt-4 text-center leading-none"
+                    >
+                      {b.caveat}
+                    </p>
                   </div>
                 </FadeUp>
 
@@ -527,6 +534,44 @@ function TechSection() {
   );
 }
 
+// ========== PHOTO BREAK ==========
+
+function PhotoBreak() {
+  return (
+    <div className="relative w-full min-h-[50vh] md:min-h-[55vh] overflow-hidden">
+      <Image
+        src="/images/bar/main-bar.jpg"
+        alt="The main bar at The ParT Barn — warm wood, green stools, TVs above"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: "rgba(30, 61, 26, 0.38)" }}
+      />
+
+      <div className="absolute inset-0 flex items-center justify-center px-6">
+        <p
+          className="font-caveat text-text-light text-4xl md:text-6xl text-center leading-[1.1] drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+          style={{ transform: "rotate(-2deg)" }}
+        >
+          the kitchen is twenty feet away.
+        </p>
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/60 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/60 to-transparent"
+      />
+    </div>
+  );
+}
+
 // ========== WHAT'S INCLUDED ==========
 
 const included = [
@@ -629,7 +674,7 @@ const rates = [
 
 function RatesSection() {
   return (
-    <section className="relative bg-bg-cream py-24 md:py-32 overflow-hidden">
+    <section className="relative bg-bg-cream py-16 md:py-20 overflow-hidden">
       <PaperTexture />
 
       <div
@@ -641,71 +686,53 @@ function RatesSection() {
         className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent"
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-16 md:mb-20">
-          <FadeUp>
-            <p className="eyebrow text-brand-accent text-sm mb-5">Simulator Rates</p>
-          </FadeUp>
-          <FadeUp delay={0.08}>
-            <div className="flex items-center justify-center gap-5">
-              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
-              <h2 className="font-playfair italic font-normal text-text-dark text-3xl md:text-5xl leading-none">
-                Pay by the hour.
+      <div className="relative max-w-5xl mx-auto px-6 md:px-12">
+        <FadeUp>
+          <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-6 md:gap-10 mb-8">
+            <div>
+              <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] mb-2">
+                Simulator Rates
+              </p>
+              <h2 className="font-playfair italic font-normal text-text-dark text-2xl md:text-3xl leading-none">
+                Starting at $50 an hour.
               </h2>
-              <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
             </div>
-          </FadeUp>
-        </div>
-
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-y-14 md:gap-y-0 relative">
-          {rates.map((r, i) => (
-            <FadeUp key={r.label} delay={i * 0.12} as="li">
-              <div className="text-center md:px-6 relative">
-                <p className="eyebrow text-brand-accent text-xs tracking-[0.25em] mb-5">
-                  {r.label}
-                </p>
-                <div className="flex items-baseline justify-center gap-1 mb-5">
-                  <span className="font-playfair font-normal text-6xl md:text-7xl text-text-dark leading-none">
-                    {r.price}
-                  </span>
-                  <span className="font-barlow text-text-dark/60 text-base md:text-lg">
-                    {r.unit}
-                  </span>
-                </div>
-                <p className="font-barlow text-text-dark/75 text-sm md:text-base leading-[1.6] max-w-[220px] mx-auto">
-                  {r.note}
-                </p>
-                {i < rates.length - 1 && (
-                  <span
-                    aria-hidden="true"
-                    className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-24 bg-brand-accent/30"
-                  />
-                )}
-              </div>
-            </FadeUp>
-          ))}
-        </ul>
-
-        {/* Context + members nudge */}
-        <div className="mt-16 text-center">
-          <FadeUp delay={0.35}>
-            <p className="font-barlow text-text-dark/65 text-sm max-w-2xl mx-auto leading-[1.7] mb-6">
-              Rates are per bay, not per person — up to six players per bay.
-              Peak applies Oct–Apr evenings, weekends, and holidays.
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.42}>
             <a
               href="/pricing"
-              className="inline-flex items-center gap-2 font-barlow text-text-dark hover:text-brand-accent transition-colors text-sm md:text-base"
+              className="eyebrow text-brand-accent hover:text-text-dark transition-colors text-xs tracking-[0.25em] whitespace-nowrap"
             >
-              <span className="font-playfair italic">Members pay less.</span>
-              <span className="eyebrow text-brand-accent tracking-[0.2em]">
-                See Membership Tiers →
-              </span>
+              See Full Rates &amp; Memberships →
             </a>
-          </FadeUp>
-        </div>
+          </div>
+        </FadeUp>
+
+        <FadeUp delay={0.1}>
+          <ul className="grid grid-cols-3 border-y border-text-dark/15 divide-x divide-text-dark/15">
+            {rates.map((r) => (
+              <li key={r.label} className="py-5 md:py-6 px-3 md:px-6 text-center">
+                <p className="eyebrow text-brand-accent text-[10px] md:text-xs tracking-[0.25em] mb-2">
+                  {r.label}
+                </p>
+                <p className="font-playfair font-normal text-3xl md:text-4xl text-text-dark leading-none mb-2">
+                  {r.price}
+                  <span className="font-barlow text-text-dark/55 text-sm md:text-base ml-1">
+                    {r.unit}
+                  </span>
+                </p>
+                <p className="font-barlow text-text-dark/65 text-[11px] md:text-xs leading-snug">
+                  {r.note}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </FadeUp>
+
+        <FadeUp delay={0.2}>
+          <p className="font-barlow text-text-dark/60 text-xs md:text-sm max-w-2xl mx-auto text-center leading-[1.7] mt-6">
+            Per bay, not per person — up to six players. Peak applies Oct–Apr
+            evenings, weekends, and holidays.
+          </p>
+        </FadeUp>
       </div>
     </section>
   );
@@ -716,40 +743,57 @@ function RatesSection() {
 function FinalCtaSection() {
   return (
     <section
-      className="relative py-32 md:py-40 overflow-hidden"
+      aria-labelledby="bays-cta-heading"
+      className="relative min-h-[70vh] flex flex-col justify-center py-32 md:py-40 overflow-hidden"
       style={{ backgroundColor: "#1e3d1a" }}
     >
-      <Image
-        src="/images/bar/main-bar.jpg"
-        alt="The bar at The ParT Barn with warm lighting and the simulator bays beyond"
-        fill
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+      <div className="absolute inset-0 z-0 motion-safe:animate-ken-burns">
+        <Image
+          src="/images/gallery/bar-overhead.jpg"
+          alt="Overhead view of the bar at The ParT Barn — green stools, warm wood, late-night energy"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
       <div
-        className="absolute inset-0"
-        style={{ backgroundColor: "rgba(30, 61, 26, 0.70)" }}
+        className="absolute inset-0 z-10"
+        style={{ backgroundColor: "rgba(30, 61, 26, 0.72)" }}
       />
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-12 text-center">
+      <div className="relative z-20 max-w-4xl mx-auto px-6 md:px-12 text-center w-full">
         <FadeUp>
-          <p className="eyebrow text-brand-accent text-sm mb-5">Book a Bay</p>
-        </FadeUp>
-        <FadeUp delay={0.08}>
-          <div className="flex items-center justify-center gap-5 mb-8">
-            <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
-            <h2 className="font-playfair italic font-normal text-3xl md:text-5xl text-text-light leading-none">
-              Your bay is waiting.
-            </h2>
-            <span aria-hidden="true" className="block h-px w-12 md:w-16 bg-brand-accent" />
-          </div>
-        </FadeUp>
-        <FadeUp delay={0.18}>
-          <p className="font-barlow text-text-light/80 text-base md:text-lg leading-[1.7] max-w-xl mx-auto mb-10">
-            Nine bays, open seven nights a week. Pick your time.
+          <p className="eyebrow text-brand-accent text-sm tracking-[0.25em] mb-5">
+            Book a Bay
           </p>
         </FadeUp>
-        <FadeUp delay={0.26}>
+        <FadeUp delay={0.08}>
+          <span aria-hidden="true" className="block h-px w-16 bg-brand-accent mx-auto mb-8" />
+        </FadeUp>
+        <FadeUp delay={0.16}>
+          <h2
+            id="bays-cta-heading"
+            className="font-playfair font-normal text-5xl md:text-7xl lg:text-8xl text-text-light leading-[1.02] mb-6"
+          >
+            Pick a night.
+            <span className="block font-playfair italic">Pick a bay.</span>
+          </h2>
+        </FadeUp>
+        <FadeUp delay={0.28}>
+          <p
+            className="font-caveat text-brand-accent text-3xl md:text-5xl leading-none mb-10"
+            style={{ transform: "rotate(-1.5deg)" }}
+          >
+            the tee time is whenever.
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.36}>
+          <p className="font-barlow text-text-light/80 text-base md:text-lg leading-[1.7] max-w-xl mx-auto mb-10">
+            Nine bays, open seven nights a week. Up to six per bay. Food and drinks
+            delivered while you play.
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.44}>
           <div className="flex flex-col items-center gap-6">
             <Button
               href={BUSINESS.booking.bayUrl}
@@ -760,9 +804,12 @@ function FinalCtaSection() {
             </Button>
             <a
               href={`tel:${BUSINESS.phoneRaw}`}
-              className="eyebrow text-text-light/80 hover:text-brand-accent transition-colors text-xs tracking-[0.25em]"
+              className="font-playfair text-text-light/85 hover:text-brand-accent transition-colors text-base md:text-lg"
             >
-              Questions? Call us {BUSINESS.phone}
+              or call us at{" "}
+              <span className="italic underline underline-offset-4 decoration-brand-accent/40">
+                {BUSINESS.phone}
+              </span>
             </a>
           </div>
         </FadeUp>
@@ -779,6 +826,7 @@ export default function GolfBaysPage() {
       <BaysHero />
       <ExperienceSection />
       <TechSection />
+      <PhotoBreak />
       <IncludedSection />
       <RatesSection />
       <FinalCtaSection />
