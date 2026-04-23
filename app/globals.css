@@ -15,6 +15,7 @@
   --font-playfair: var(--font-playfair);
   --font-barlow: var(--font-barlow);
   --font-barlow-condensed: var(--font-barlow-condensed);
+  --font-caveat: var(--font-caveat);
 }
 
 html {
@@ -53,6 +54,10 @@ body {
 
 .font-barlow-condensed {
   font-family: var(--font-barlow-condensed), sans-serif;
+}
+
+.font-caveat {
+  font-family: var(--font-caveat), "Brush Script MT", cursive;
 }
 
 @media (prefers-reduced-motion: reduce) {

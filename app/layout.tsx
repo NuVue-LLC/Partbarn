@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Barlow_Condensed, Barlow } from "next/font/google";
+import { Playfair_Display, Barlow_Condensed, Barlow, Caveat } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
@@ -24,6 +24,13 @@ const barlow = Barlow({
   variable: "--font-barlow",
   subsets: ["latin"],
   weight: ["300", "400", "500"],
+  display: "swap",
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -59,7 +66,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${barlowCondensed.variable} ${barlow.variable} h-full antialiased`}
+      className={`${playfair.variable} ${barlowCondensed.variable} ${barlow.variable} ${caveat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg-cream text-text-dark">
         <a href="#main" className="skip-link">Skip to content</a>
